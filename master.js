@@ -1,7 +1,7 @@
 var SS = function () {
-    document.addEventListener('keydown', this.keydown.bind(this), false);
-    document.addEventListener('touchstart', this.touchstart.bind(this), false);
-    document.addEventListener('hashchange', this.hashchange.bind(this), false);
+    document.addEventListener('keydown', _.bind(this.keydown, this), false);
+    document.addEventListener('touchstart', _.bind(this.touchstart, this), false);
+    document.addEventListener('hashchange', _.bind(this.hashchange, this), false);
 
     this.currentSection = 0;
     this.currentSlide = 0;
@@ -13,9 +13,9 @@ var SS = function () {
     }
 
     this.articles = [];
-    this.sections.map(function (el) {
+    this.sections.map(_.bind(function (el) {
         this.articles.push(Array.prototype.slice.call(el.querySelectorAll('header, section, footer')));
-    }.bind(this));
+    }, this));
 
     this.navigateTo(0, 0);
 };

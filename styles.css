@@ -3,20 +3,20 @@ article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,sec
 input:focus,a:focus,textarea:focus{outline:0;}
 blockquote:before,blockquote:after,q:before,q:after{content:'';}
 sup,sub{vertical-align:baseline;position:relative;top:-0.4em;}sub{top:0.4em;}
-html,body,textarea,legend{font:14px/20px Helvetica,Arial,Verdana,sans-serif;color:#222;}
+html,body,textarea,legend{font:14px/20px Helvetica,Arial,Verdana,sans-serif;color:#DDD;}
 
 html {
-    width: 80%;
-    height: 80%;
+    background: #222;
 }
+
 body {
     position: absolute;
-    margin: 10%;
-    width: 80%;
-    height: 80%;
+    margin: 1%;
+    width: 98%;
+    height: 98%;
 
     -webkit-perspective: 600px;
-    -webkit-perspective-origin: 50% 25%;
+    -webkit-perspective-origin: 50% 50%;
 }
 
 body > header,
@@ -27,8 +27,14 @@ body > article > footer,
 body > footer {
     display: none;
     position: absolute;
-	width: 100%;
-	min-height: 600px;
+	width: 99%;
+	height: 99%;
+	padding: 1%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
 
     -webkit-transform-style: preserve-3d;
     -webkit-transition: all 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
@@ -36,6 +42,17 @@ body > footer {
     -ms-transition: all 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
     -o-transition: all 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
     transition: all 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+body > article > header,
+body > article > section,
+body > article > footer {
+    background: #333;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    border-radius: 8px;
 }
 
 .past {
