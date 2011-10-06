@@ -19,7 +19,9 @@ var SS = function () {
         this.articles.push(Array.prototype.slice.call(el.querySelectorAll('header, section, footer')));
     }, this));
 
-    var form = document.createElement('form');
+    var form = document.createElement('form'),
+        toc = document.createElement('section'),
+        tree = [];
     form.setAttribute('method', 'get');
     form.setAttribute('id', 'goto');
     form.innerHTML = '<h1>Go To Slide</h1>' +
@@ -36,6 +38,35 @@ var SS = function () {
         '<button type="submit">Go</button>';
     document.body.appendChild(form);
     form.addEventListener('submit', _.bind(this.formSubmit, this), false);
+
+    toc.setAttribute('id', 'toc');
+    toc.innerHTML = '';
+
+    _.each(this.sections, function (section, index) {
+        var subs = _.map(Array.prototype.slice.call(section.querySelectorAll('section h1')), function (el) {
+            return el.innerText;
+        });
+
+        console.log(index, section.querySelector('h1:first-of-type').innerText)
+
+        toc.innerHTML += '<li><a href="#!/section/' + index + '/slide/0">' + section.querySelector('h1:first-of-type').innerText + '</a>';
+        _.each(subs, function (subhead, subindex) {
+            if (subindex === 0) {
+                toc.innerHTML += '<ol>'
+            }
+
+            toc.innerHTML += '<li><a href="#!/section/' + index + '/slide/' + subindex + '">' + subhead + '</a></li>'
+
+            if (subindex + 1 === subs.length) {
+                toc.innerHTML += '</ol>'
+            }
+        });
+        toc.innerHTML += '</li>';
+    });
+    toc.innerHTML = '<ol>' + toc.innerHTML + '</ol>';
+
+    // console.log(toc.innerHTML)
+    document.body.appendChild(toc);
 
     this.readUrl();
 };
