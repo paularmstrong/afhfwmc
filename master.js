@@ -1,6 +1,7 @@
 var SS = function () {
     document.addEventListener('keydown', _.bind(this.keydown, this), false);
     document.addEventListener('keypress', _.bind(this.keypress, this), false);
+    document.addEventListener('keyup', _.bind(this.keyup, this), false);
     document.addEventListener('touchstart', _.bind(this.touchstart, this), false);
     document.addEventListener('hashchange', _.bind(this.hashchange, this), false);
 
@@ -18,47 +19,27 @@ var SS = function () {
         this.articles.push(Array.prototype.slice.call(el.querySelectorAll('header, section, footer')));
     }, this));
 
+    var form = document.createElement('form');
+    form.setAttribute('method', 'get');
+    form.setAttribute('id', 'goto');
+    form.innerHTML = '<h1>Go To Slide</h1>' +
+        '<ul>' +
+            '<li>' +
+                '<label for="section">Section</label>' +
+                '<input type="number" min="1" max="' + this.sections.length + '" value="1" step="1" name="section" id="section">' +
+            '</li>' +
+            '<li>' +
+                '<label for="slide">Slide</label>' +
+                '<input type="number" min="1" value="1" step="1" name="slide" id="slide">' +
+           ' </li>' +
+        '</ul>' +
+        '<button type="submit">Go</button>';
+    document.body.appendChild(form);
+    form.addEventListener('submit', _.bind(this.formSubmit, this), false);
+
     this.navigateTo(0, 0);
 };
 SS.prototype = {
-    keydown: function (event) {
-        if (event.keyCode < 37 || event.keyCode > 40) {
-            return;
-        }
-
-        event.preventDefault();
-        switch (event.keyCode) {
-        case 37:
-        case 38:
-            this.advance(-1);
-            break;
-        case 39:
-        case 40:
-            this.advance(1);
-            break;
-        }
-    },
-
-    keypress: function (event) {
-        switch (event.keyCode) {
-        case 101: // e: end
-            this.navigateTo(this.sections.length - 1, 0);
-            break;
-        case 103: // g: goto
-            break;
-        case 104: // h: home
-            this.navigateTo(0, 0);
-            break;
-        case 110: // n: next section
-            // next section
-            this.navigateTo(this.currentSection + 1, 0);
-            break;
-        case 112: // p: previous section
-            this.navigateTo(this.currentSection - 1, 0);
-            break;
-        }
-    },
-
     advance: function (count) {
         var section = this.currentSection,
             articles = this.articles[section],
@@ -99,6 +80,84 @@ SS.prototype = {
         if (this.articles[index].length) {
             this.currentSlide = setClasses(this.articles[index], article);
         }
+    },
+
+    keydown: function (event) {
+        switch (event.keyCode) {
+        case 37:
+        case 38:
+            this.advance(-1);
+            break;
+        case 39:
+        case 40:
+            this.advance(1);
+            break;
+        default:
+            return;
+        }
+        event.preventDefault();
+    },
+
+    keypress: function (event) {
+        switch (event.keyCode) {
+        case 101: // e: end
+            this.navigateTo(this.sections.length - 1, 0);
+            break;
+        case 103: // g: goto
+            this.showGotoForm();
+            break;
+        case 104: // h: home
+            this.navigateTo(0, 0);
+            break;
+        case 110: // n: next section
+            // next section
+            this.navigateTo(this.currentSection + 1, 0);
+            break;
+        case 112: // p: previous section
+            this.navigateTo(this.currentSection - 1, 0);
+            break;
+        default:
+            return;
+        }
+
+        event.preventDefault();
+    },
+
+    keyup: function (event) {
+        switch (event.keyCode) {
+        case 27:
+            this.hideGotoForm();
+            break;
+        default:
+            return;
+        }
+
+        event.preventDefault();
+    },
+
+    showGotoForm: function () {
+        var form = document.querySelector('#goto');
+
+        form.setAttribute('class', 'show');
+        form.querySelector('#section').value = this.currentSection + 1;
+        form.querySelector('#section').focus();
+        form.querySelector('#slide').value = this.currentSlide + 1;
+    },
+
+    hideGotoForm: function () {
+        document.querySelector('#goto').setAttribute('class', '');
+    },
+
+    formSubmit: function (event) {
+        event.preventDefault();
+
+        var form = document.querySelector('#goto'),
+            section = parseInt(form.querySelector('#section').value, 10) - 1,
+            slide = parseInt(form.querySelector('#slide').value, 10) - 1;
+
+        this.navigateTo(section, slide);
+
+        this.hideGotoForm();
     },
 
     touchstart: function (event) {
