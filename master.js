@@ -106,7 +106,7 @@ SS.prototype = {
         case 103: // g: goto
             this.showGotoForm();
             break;
-        case 104: // h: home
+        case 115: // s: start
             this.navigateTo(0, 0);
             break;
         case 110: // n: next section
