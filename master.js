@@ -3,7 +3,7 @@ var SS = function () {
     document.addEventListener('keypress', _.bind(this.keypress, this), false);
     document.addEventListener('keyup', _.bind(this.keyup, this), false);
     document.addEventListener('touchstart', _.bind(this.touchstart, this), false);
-    document.addEventListener('hashchange', _.bind(this.hashchange, this), false);
+    window.addEventListener('hashchange', _.bind(this.readUrl, this), false);
 
     this.currentSection = 0;
     this.currentSlide = 0;
@@ -37,7 +37,7 @@ var SS = function () {
     document.body.appendChild(form);
     form.addEventListener('submit', _.bind(this.formSubmit, this), false);
 
-    this.navigateTo(0, 0);
+    this.readUrl();
 };
 SS.prototype = {
     advance: function (count) {
@@ -80,6 +80,21 @@ SS.prototype = {
         if (this.articles[index].length) {
             this.currentSlide = setClasses(this.articles[index], article);
         }
+
+        window.history.pushState({}, '', window.location.href.replace(/\#\!\/section\/\d+\/slide\/\d+$/, '') + '#!/section/' + this.currentSection + '/slide/' + this.currentSlide);
+    },
+
+    readUrl: function () {
+        var hash = window.location.hash.match(/\#\!\/section\/(\d+)\/slide\/(\d+)$/),
+            section = 0,
+            slide = 0;
+
+        if (hash && hash.length === 3) {
+            section = hash[1];
+            slide = hash[2];
+        }
+
+        this.navigateTo(section, slide);
     },
 
     keydown: function (event) {
@@ -180,10 +195,6 @@ SS.prototype = {
         } else if (touch.clientY > window.innerHeight - ht) {
             this.navigateTo(this.currentSection, this.currentSlide + 1);
         }
-    },
-
-    hashchange: function (event) {
-        console.log('hashchange', event);
     }
 };
 
