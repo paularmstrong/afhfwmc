@@ -161,7 +161,25 @@ SS.prototype = {
     },
 
     touchstart: function (event) {
-        console.log('touchstart', event);
+        if (event.touches.length !== 1) {
+            return;
+        }
+
+        event.preventDefault();
+
+        var touch = event.touches[0],
+            wt = window.innerWidth * 0.3,
+            ht = window.innerHeight * 0.3;
+
+        if (touch.clientX < wt) {
+            this.navigateTo(this.currentSection - 1, 0);
+        } else if (touch.clientX > window.innerWidth - wt) {
+            this.navigateTo(this.currentSection + 1, 0);
+        } else if (touch.clientY < ht) {
+            this.navigateTo(this.currentSection, this.currentSlide - 1);
+        } else if (touch.clientY > window.innerHeight - ht) {
+            this.navigateTo(this.currentSection, this.currentSlide + 1);
+        }
     },
 
     hashchange: function (event) {
