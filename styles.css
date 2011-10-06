@@ -137,7 +137,8 @@ body > footer {
         -webkit-transform: translate3d(0, 50%, 0) rotateX(-70deg) translate3d(0, 50%, 0);
     }
 
-form#goto {
+form#goto,
+section#toc {
     opacity: 0;
     background: rgba(0,0,0,0.9);
     color: #FFF;
@@ -170,7 +171,17 @@ form#goto {
 
     -webkit-transform: scale(0.5);
 }
-    form#goto.show {
+    form#goto.show,
+    section#toc.show {
         opacity: 1;
         -webkit-transform: scale(1);
     }
+    section#toc {
+        width: 400px;
+        height: 400px;
+        margin: -200px 0 0 -200px;
+        overflow-y: scroll;
+    }
+        section#toc a {
+            color: #FFF;
+        }

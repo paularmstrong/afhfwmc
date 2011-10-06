@@ -47,8 +47,6 @@ var SS = function () {
             return el.innerText;
         });
 
-        console.log(index, section.querySelector('h1:first-of-type').innerText)
-
         toc.innerHTML += '<li><a href="#!/section/' + index + '/slide/0">' + section.querySelector('h1:first-of-type').innerText + '</a>';
         _.each(subs, function (subhead, subindex) {
             if (subindex === 0) {
@@ -64,8 +62,6 @@ var SS = function () {
         toc.innerHTML += '</li>';
     });
     toc.innerHTML = '<ol>' + toc.innerHTML + '</ol>';
-
-    // console.log(toc.innerHTML)
     document.body.appendChild(toc);
 
     this.readUrl();
@@ -150,17 +146,23 @@ SS.prototype = {
             this.navigateTo(this.sections.length - 1, 0);
             break;
         case 103: // g: goto
-            this.showGotoForm();
-            break;
-        case 115: // s: start
-            this.navigateTo(0, 0);
+            this.showModal('goto');
+            var form = document.querySelector('#goto');
+            form.querySelector('#section').value = this.currentSection + 1;
+            form.querySelector('#section').focus();
+            form.querySelector('#slide').value = this.currentSlide + 1;
             break;
         case 110: // n: next section
-            // next section
             this.navigateTo(this.currentSection + 1, 0);
             break;
         case 112: // p: previous section
             this.navigateTo(this.currentSection - 1, 0);
+            break;
+        case 115: // s: start
+            this.navigateTo(0, 0);
+            break;
+        case 116: // t: toc
+            this.showModal('toc');
             break;
         default:
             return;
@@ -172,7 +174,7 @@ SS.prototype = {
     keyup: function (event) {
         switch (event.keyCode) {
         case 27:
-            this.hideGotoForm();
+            this.hideModal();
             break;
         default:
             return;
@@ -181,17 +183,12 @@ SS.prototype = {
         event.preventDefault();
     },
 
-    showGotoForm: function () {
-        var form = document.querySelector('#goto');
-
-        form.setAttribute('class', 'show');
-        form.querySelector('#section').value = this.currentSection + 1;
-        form.querySelector('#section').focus();
-        form.querySelector('#slide').value = this.currentSlide + 1;
+    showModal: function (id) {
+        document.querySelector('#' + id).setAttribute('class', 'show');
     },
 
-    hideGotoForm: function () {
-        document.querySelector('#goto').setAttribute('class', '');
+    hideModal: function () {
+        document.querySelector('.show').setAttribute('class', '');
     },
 
     formSubmit: function (event) {
@@ -203,7 +200,7 @@ SS.prototype = {
 
         this.navigateTo(section, slide);
 
-        this.hideGotoForm();
+        this.hideModal();
     },
 
     touchstart: function (event) {
