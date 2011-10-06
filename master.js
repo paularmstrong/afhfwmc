@@ -1,5 +1,6 @@
 var SS = function () {
     document.addEventListener('keydown', _.bind(this.keydown, this), false);
+    document.addEventListener('keypress', _.bind(this.keypress, this), false);
     document.addEventListener('touchstart', _.bind(this.touchstart, this), false);
     document.addEventListener('hashchange', _.bind(this.hashchange, this), false);
 
@@ -34,6 +35,26 @@ SS.prototype = {
         case 39:
         case 40:
             this.advance(1);
+            break;
+        }
+    },
+
+    keypress: function (event) {
+        switch (event.keyCode) {
+        case 101: // e: end
+            this.navigateTo(this.sections.length - 1, 0);
+            break;
+        case 103: // g: goto
+            break;
+        case 104: // h: home
+            this.navigateTo(0, 0);
+            break;
+        case 110: // n: next section
+            // next section
+            this.navigateTo(this.currentSection + 1, 0);
+            break;
+        case 112: // p: previous section
+            this.navigateTo(this.currentSection - 1, 0);
             break;
         }
     },
