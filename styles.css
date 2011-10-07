@@ -79,7 +79,7 @@ body > article > footer,
 body > footer {
     -webkit-transform-style: preserve-3d;
     -webkit-transition: all 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
-    -moz-transition: all, left, right 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+    -moz-transition: all 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
     -ms-transition: all 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
     -o-transition: all 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
     transition: all 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
@@ -116,15 +116,20 @@ body > footer {
 .past {
     display: block;
     opacity: 0;
-	left: -120%;
     -webkit-transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);
+	-moz-transform: translateX(-120%);
+	-ms-transform: translateX(-120%);
+	-o-transform: translateX(-120%);
+	transform: translateX(-120%);
 }
     body > article > header.past,
     body > article > section.past,
     body > article > footer.past {
         -webkit-transform: translate3d(0, -50%, 0) rotateX(70deg) translate3d(0, -50%, 0);
-		left: auto;
-		top: -120%;
+    	-moz-transform: translateY(-120%);
+    	-ms-transform: translateY(-120%);
+    	-o-transform: translateY(-120%);
+    	transform: translateY(-120%);
     }
 
 .present {
@@ -134,25 +139,21 @@ body > footer {
 .future {
     display: block;
     opacity: 0;
-	right: -120%;
     -webkit-transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);
+	-moz-transform: translate(120%, 0);
+	-ms-transform: translate(120%, 0);
+	-o-transform: translate(120%, 0);
+	transform: translate(120%, 0);
 }
     body > article > header.future,
     body > article > section.future,
     body > article > footer.future {
         -webkit-transform: translate3d(0, 50%, 0) rotateX(-70deg) translate3d(0, 50%, 0);
-		right: auto;
-		bottom: -120%;
+    	-moz-transform: translateY(120%);
+    	-ms-transform: translateY(120%);
+    	-o-transform: translateY(120%);
+    	transform: translateY(120%);
     }
-
-@media all and (-webkit-transform-3d) {
-	.past {
-		left: auto;
-	}
-	.future {
-		right: auto;
-	}
-}
 
 form#goto,
 section#toc {

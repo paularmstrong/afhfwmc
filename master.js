@@ -151,7 +151,7 @@ SS.prototype = {
             return;
         }
 
-        switch (event.keyCode) {
+        switch (event.charCode) {
         case 101: // e: end
             this.navigateTo(this.sections.length - 1, 0);
             break;
