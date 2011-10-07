@@ -8,7 +8,7 @@ var SS = function () {
     this.currentSection = 0;
     this.currentSlide = 0;
 
-    this.sections = Array.prototype.slice.call(document.querySelectorAll('body > header,body > article,body > footer'));
+    this.sections = _.toArray(document.querySelectorAll('body > header,body > article,body > footer'));
 
     if (!this.sections.length) {
         throw 'No slides found';
@@ -16,7 +16,7 @@ var SS = function () {
 
     this.articles = [];
     this.sections.map(_.bind(function (el) {
-        this.articles.push(Array.prototype.slice.call(el.querySelectorAll('header, section, footer')));
+        this.articles.push(_.toArray(el.querySelectorAll('header, section, footer')));
     }, this));
 
     var form = document.createElement('form'),
@@ -43,7 +43,7 @@ var SS = function () {
     toc.innerHTML = '';
 
     _.each(this.sections, function (section, index) {
-        var subs = _.map(Array.prototype.slice.call(section.querySelectorAll('section h1')), function (el) {
+        var subs = _.map(_.toArray(section.querySelectorAll('section h1')), function (el) {
             return el.innerText;
         });
 
@@ -88,6 +88,8 @@ SS.prototype = {
     },
 
     navigateTo: function (section, article) {
+        this.hideModal();
+
         var index;
 
         function setClasses(els, curIndex) {
@@ -125,6 +127,10 @@ SS.prototype = {
     },
 
     keydown: function (event) {
+        if (event.metaKey) {
+            return;
+        }
+
         switch (event.keyCode) {
         case 37:
         case 38:
@@ -141,6 +147,10 @@ SS.prototype = {
     },
 
     keypress: function (event) {
+        if (event.metaKey) {
+            return;
+        }
+
         switch (event.keyCode) {
         case 101: // e: end
             this.navigateTo(this.sections.length - 1, 0);
@@ -172,6 +182,10 @@ SS.prototype = {
     },
 
     keyup: function (event) {
+        if (event.metaKey) {
+            return;
+        }
+
         switch (event.keyCode) {
         case 27:
             this.hideModal();
@@ -188,7 +202,11 @@ SS.prototype = {
     },
 
     hideModal: function () {
-        document.querySelector('.show').setAttribute('class', '');
+        var modal = document.querySelector('.show');
+
+        if (modal) {
+            modal.setAttribute('class', '');
+        }
     },
 
     formSubmit: function (event) {
