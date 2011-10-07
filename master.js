@@ -21,7 +21,8 @@ var SS = function () {
 
     var form = document.createElement('form'),
         toc = document.createElement('section'),
-        tree = [];
+        tree = [],
+        str = '';
     form.setAttribute('method', 'get');
     form.setAttribute('id', 'goto');
     form.innerHTML = '<h1>Go To Slide</h1>' +
@@ -36,32 +37,34 @@ var SS = function () {
            ' </li>' +
         '</ul>' +
         '<button type="submit">Go</button>';
+    form.setAttribute('class', 'hidden');
     document.body.appendChild(form);
     form.addEventListener('submit', _.bind(this.formSubmit, this), false);
 
     toc.setAttribute('id', 'toc');
-    toc.innerHTML = '';
+    str = '';
 
     _.each(this.sections, function (section, index) {
         var subs = _.map(_.toArray(section.querySelectorAll('section h1')), function (el) {
-            return el.innerText;
+            return el.textContent;
         });
 
-        toc.innerHTML += '<li><a href="#!/section/' + index + '/slide/0">' + section.querySelector('h1:first-of-type').innerText + '</a>';
+        str += '<li><a href="#!/section/' + index + '/slide/0">' + section.querySelector('h1:first-of-type').textContent + '</a>';
         _.each(subs, function (subhead, subindex) {
             if (subindex === 0) {
-                toc.innerHTML += '<ol>'
+                str += '<ol>'
             }
 
-            toc.innerHTML += '<li><a href="#!/section/' + index + '/slide/' + subindex + '">' + subhead + '</a></li>'
+            str += '<li><a href="#!/section/' + index + '/slide/' + subindex + '">' + subhead + '</a></li>'
 
             if (subindex + 1 === subs.length) {
-                toc.innerHTML += '</ol>'
+                str += '</ol>'
             }
         });
-        toc.innerHTML += '</li>';
+        str += '</li>';
     });
-    toc.innerHTML = '<ol>' + toc.innerHTML + '</ol>';
+    toc.innerHTML = '<h1>Table of Contents</h1><ol>' + str + '</ol>';
+    toc.setAttribute('class', 'hidden');
     document.body.appendChild(toc);
 
     this.readUrl();
@@ -76,7 +79,7 @@ SS.prototype = {
             return;
         }
 
-        if (!articles.length || articles.length <= article) {
+        if (count > 0 && (!articles.length || articles.length <= article)) {
             section += 1;
             article = 0;
         } else if (article <= -1) {
@@ -151,7 +154,7 @@ SS.prototype = {
             return;
         }
 
-        switch (event.charCode) {
+        switch (event.charCode || event.keyCode) {
         case 101: // e: end
             this.navigateTo(this.sections.length - 1, 0);
             break;
@@ -198,13 +201,33 @@ SS.prototype = {
     },
 
     showModal: function (id) {
-        document.querySelector('#' + id).setAttribute('class', 'show');
+        var modal = document.querySelector('#' + id);
+        modal.setAttribute('class', 'show');
     },
 
     hideModal: function () {
-        var modal = document.querySelector('.show');
+        var modal = document.querySelector('.show'),
+            ended = false;
+
+        function finished(event) {
+            if (ended) {
+                return;
+            }
+            ended = true;
+            modal.setAttribute('class', 'hidden');
+            modal.removeEventListener('webkitTransitionEnd', finished, false);
+            modal.removeEventListener('mozTransitionEnd', finished, false);
+            modal.removeEventListener('msTransitionEnd', finished, false);
+            modal.removeEventListener('oTransitionEnd', finished, false);
+            modal.removeEventListener('transitionend', finished, false);
+        }
 
         if (modal) {
+            modal.addEventListener('webkitTransitionEnd', finished, false);
+            modal.addEventListener('mozTransitionEnd', finished, false);
+            modal.addEventListener('msTransitionEnd', finished, false);
+            modal.addEventListener('oTransitionEnd', finished, false);
+            modal.addEventListener('transitionend', finished, false);
             modal.setAttribute('class', '');
         }
     },
