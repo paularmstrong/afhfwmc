@@ -42,7 +42,23 @@ a {
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
     border-radius: 3px;
+    color: #3A57AB;
+    -webkit-transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
+    -moz-transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
+    -ms-transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
+    -o-transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
+    transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
 }
+    a:visited {
+        color: #573AAB;
+    }
+    a:hover {
+        background-color: #3A57AB;
+        color: #EEE;
+    }
+        a:visited:hover {
+            background-color: #573AAB;
+        }
 
 h1,
 h2,
@@ -54,12 +70,33 @@ h6 {
     line-height: 1.2em;
     font-weight: bold;
 }
-h1 { font-size: 64px; }
+h1 {
+    font-size: 64px;
+    margin-bottom: 24px;
+}
 h2 { font-size: 48px; }
 h3 { font-size: 36px; }
 h4 { font-size: 28px; }
 h5 { font-size: 24px; }
 h6 { font-size: 20px; }
+
+ul,
+ol,
+dl {
+    padding: 0 0 0 36px;
+    margin: 0 0 24px;
+}
+ul li { list-style-type: disc;}
+    ul li ul li { list-style-type: circle; }
+    ul li ul li ul li { list-style-type: square; }
+ol li { list-style-type: decimal; }
+    ol li ol li { list-style-type: lower-alpha; }
+    ol li ol li ol li { list-style-type: lower-roman; }
+
+p,
+pre {
+    margin: 0 0 24px;
+}
 
 label {
     display: block;
@@ -171,6 +208,7 @@ body > footer {
     }
 
 .present p,
+.present div,
 .present li {
     -webkit-transition: opacity 400ms ease-in-out;
     -moz-transition: opacity 400ms ease-in-out;

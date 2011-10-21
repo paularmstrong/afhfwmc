@@ -25,15 +25,18 @@
         <header>
             <hgroup>
                 <h1>HTML Level 1</h1>
-                <h2>DOM</h2>
-                <h2>Validation</h2>
-                <h2>Semantics</h2>
             </hgroup>
+            <ol>
+                <li>DOM</li>
+                <li>Elements</li>
+                <li>Validation</li>
+                <li>Semantics</li>
+            </ol>
         </header>
         <section>
             <h1><abbr title="Document Object Model">DOM</abbr></h1>
             <p>That's just the HTML Elements, right?</p>
-            <p class="step">Well&hellip; <em>Sorta&hellip;</em></p>
+            <p class="step">No.</p>
         </section>
         <section>
             <h1>DOM: <dfn id="dom">Set of Objects and Interfaces for Accessing and Manipulating Document Objects</dfn></h1>
@@ -54,6 +57,172 @@
                 <li>Entity</li>
                 <li>Notation</li>
             </ul>
+        </section>
+        <section>
+            <h1>Document</h1>
+            <ul>
+                <li>Single point-of-entry that represents the entire HTML or XML document.</li>
+                <li>Root of the document tree.</li>
+            </ul>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#i-Document">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#i-Document</a></li>
+                </ol>
+            </div>
+        </section>
+        <section>
+            <h1>DocumentFragment</h1>
+            <ul>
+                <li>Lightweight <code>Document</code> object.</li>
+                <li>Useful for extracting portions of a document.</li>
+                <li>Creating new parts of a document.</li>
+            </ul>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-B63ED1A3">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-B63ED1A3</a></li>
+                </ol>
+            </div>
+        </section>
+        <section>
+            <h1>DocumentType</h1>
+            <ul>
+                <li>The <code>doctype</code> of the Document.</li>
+                <li><em>readonly</em></li>
+            </ul>
+            <pre><samp>&lt;!DOCTYPE HTML&gt;</samp></pre>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-412266927">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-412266927</a></li>
+                </ol>
+            </div>
+        </section>
+        <section>
+            <h1>EntityReference</h1>
+            <ul>
+                <li>Reference to an <code>Entity</code> in the tree.</li>
+            </ul>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-11C98490">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-11C98490</a></li>
+                </ol>
+            </div>
+        </section>
+        <section>
+            <h1>Element</h1>
+            <ul>
+                <li>An HTML or XML Element.</li>
+            </ul>
+            <pre><code>&lt;div&gt;&lt;/div&gt;</code></pre>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-745549614">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-745549614</a></li>
+                </ol>
+            </div>
+        </section>
+        <section>
+            <h1>Attr</h1>
+            <ul>
+                <li>An attribute on an (HTML or XML) Element.</li>
+                <li>Not considered part of the document tree.</li>
+            </ul>
+            <pre><code>&lt;div <b>class="foobar"</b>&gt;&lt;/div&gt;</code></pre>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-637646024">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-637646024</a></li>
+                </ol>
+            </div>
+        </section>
+        <section>
+            <h1>ProcessingInstruction</h1>
+            <ul>
+                <li>A way to keep processor-specific information in the document.</li>
+                <li>Not actual document content.</li>
+            </ul>
+            <pre><code><b>&lt;?php</b> echo "foobar"; <b>?&gt;</b></code></pre>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-1004215813">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-1004215813</a></li>
+                </ol>
+            </div>
+        </section>
+        <section>
+            <h1>Comment</h1>
+            <ul>
+                <li>A piece of <code>CharacterData</code>.</li>
+                <li>Should be ignored when consuming.</li>
+            </ul>
+            <pre><code><b>&lt;!--</b> hi mom! <b>--&gt;</b></code></pre>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-1728279322">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-1728279322</a></li>
+                </ol>
+            </div>
+        </section>
+        <section>
+            <h1>Text</h1>
+            <ul>
+                <li>A piece of <code>CharacterData</code>.</li>
+                <li><i>Textual</i> content of an <code>Element</code> or <code>Attr</code>.</li>
+                <li>Only 1 text node per text block.</li>
+            </ul>
+            <pre><code>&lt;p&gt;<b>hi mom!</b>&lt;/p&gt;</code></pre>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-1312295772">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-1312295772</a></li>
+                </ol>
+            </div>
+        </section>
+        <section>
+            <h1>CDATASection</h1>
+            <ul>
+                <li>Used to escape blocks of text that could be considered markup.</li>
+                <li>Useful for including XML fragments without needing to escape characters.</li>
+            </ul>
+            <pre><code><b>&lt;![CDATA[</b>
+    &lt;p&gt;The &lt; and &gt; in this section act as though
+    they are escaped to &amp;lt; and &amp;gt;&lt;/p&gt;<b>
+]]&gt;</b></code></pre>
+            <div class="step">
+                <h2>Behavior</h2>
+                <ul>
+                    <li>Replace character entities with characters,</li>
+                    <li>Ignore line feeds,</li>
+                    <li>Replace each carriage return or tab with a single space.</li>
+                </ul>
+            </div>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-667469212">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-667469212</a></li>
+                </ol>
+            </div>
+        </section>
+        <section>
+            <h1>Entity</h1>
+            <ul>
+                <li>Usually an HTML entity, parsed or unparsed.</li>
+            </ul>
+            <pre><code>&amp;amp;
+&amp;lt;
+&amp;gt;
+&hellip;</code></pre>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-527DCFF2">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-527DCFF2</a></li>
+                </ol>
+            </div>
+        </section>
+        <section>
+            <h1>Notation</h1>
+            <ul>
+                <li>The format of an unparsed entity.</li>
+                <li><i>readonly</i></li>
+                <li><em>You'll only ever need this when parsing XML or custom DTDs.</em></li>
+            </ul>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-5431D1B9">http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-5431D1B9</a></li>
+                </ol>
+            </div>
         </section>
     </article>
 

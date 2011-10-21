@@ -4,3 +4,26 @@ abbr:after {
     font-size: 0.8em;
     content: '(' attr(title) ')';
 }
+
+.sources {
+    font-size: 0.7em;
+    position: absolute;
+    bottom: 20px;
+}
+
+pre {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    padding: 10px;
+    color: #FFF;
+    background: #101830;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 2px 2px 4px #000;
+    -moz-box-shadow: inset 2px 2px 4px #000;
+    -ms-box-shadow: inset 2px 2px 4px #000;
+    -o-box-shadow: inset 2px 2px 4px #000;
+    box-shadow: inset 2px 2px 4px #000;
+}
