@@ -73,7 +73,17 @@ SS.prototype = {
     advance: function (count) {
         var section = this.currentSection,
             articles = this.articles[section],
-            article = this.currentSlide + count;
+            article = this.currentSlide + count,
+            steps = _.toArray(this.articles[section][this.currentSlide].querySelectorAll('.step'));
+
+        if (steps.length) {
+            if (count > 0) {
+                steps.shift().setAttribute('class', 'stepShown');
+                return;
+            } else if (count < 0) {
+                steps.pop().setAttribute('class', 'step');
+            }
+        }
 
         if ((section === 0 && article < 0) || (section === this.sections.length - 1 && article > articles.length - 1)) {
             return;

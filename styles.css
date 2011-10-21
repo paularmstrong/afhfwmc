@@ -5,7 +5,7 @@ article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,sec
 input:focus,a:focus,textarea:focus{outline:0;}
 blockquote:before,blockquote:after,q:before,q:after{content:'';}
 sup,sub{vertical-align:baseline;position:relative;top:-0.4em;}sub{top:0.4em;}
-html,body,textarea,input,select,button,legend{font:18px/20px 'Droid Sans',Helvetica,Arial,Verdana,sans-serif;color:#333;line-height:1.2em;}
+html,body,textarea,input,select,button,legend{font:20px/24px 'Droid Sans',Helvetica,Arial,Verdana,sans-serif;color:#333;line-height:1.2em;}
 
 html {
     background: #888;
@@ -30,6 +30,9 @@ body {
     -o-user-select: none;
     user-select: none;
 }
+
+em, i { font-style: italic; }
+strong, b { font-weight: bold; }
 
 a {
     padding: 2px 2px 0;
@@ -166,6 +169,19 @@ body > footer {
     	-o-transform: translateY(120%);
     	transform: translateY(120%);
     }
+
+.present p,
+.present li {
+    -webkit-transition: opacity 400ms ease-in-out;
+    -moz-transition: opacity 400ms ease-in-out;
+    -ms-transition: opacity 400ms ease-in-out;
+    -o-transition: opacity 400ms ease-in-out;
+    transition: opacity 400ms ease-in-out;
+}
+
+.step {
+    opacity: 0;
+}
 
 form#goto,
 section#toc {
