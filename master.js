@@ -74,7 +74,7 @@ SS.prototype = {
         var section = this.currentSection,
             articles = this.articles[section],
             article = this.currentSlide + count,
-            steps = _.toArray(this.articles[section][this.currentSlide].querySelectorAll('.step'));
+            steps = (articles.length) ? _.toArray(articles[this.currentSlide].querySelectorAll('.step')) : [];
 
         if (steps.length) {
             if (count > 0) {
