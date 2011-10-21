@@ -82,6 +82,7 @@ SS.prototype = {
                 return;
             } else if (count < 0) {
                 steps.pop().setAttribute('class', 'step');
+                return;
             }
         }
 
@@ -121,6 +122,8 @@ SS.prototype = {
         this.currentSection = index;
         if (this.articles[index].length) {
             this.currentSlide = setClasses(this.articles[index], article);
+        } else {
+            this.currentSlide = Math.max(Math.min(index, this.articles[index].length), 0);
         }
 
         window.history.pushState({}, '', window.location.href.replace(/\#\!\/section\/\d+\/slide\/\d+$/, '') + '#!/section/' + this.currentSection + '/slide/' + this.currentSlide);

@@ -1,0 +1,63 @@
+abbr:after {
+    display: inline-block;
+    margin: 0 0 0 0.2em;
+    font-size: 0.8em;
+    content: '(' attr(title) ')';
+}
+
+.sources {
+    font-size: 0.7em;
+    position: absolute;
+    bottom: 20px;
+}
+
+pre {
+    font-family: Monaco, "Courier New", Courier, monospace;
+    padding: 10px;
+    color: #FFF;
+    background: #18274C;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 2px 2px 4px #000;
+    -moz-box-shadow: inset 2px 2px 4px #000;
+    -ms-box-shadow: inset 2px 2px 4px #000;
+    -o-box-shadow: inset 2px 2px 4px #000;
+    box-shadow: inset 2px 2px 4px #000;
+}
+
+@media screen {
+    .pln { color: #DDD; }  /* plain text */
+    .str { color: #5CE638; }  /* string content */
+    .kwd { color: #5BA1CF; }  /* a keyword */
+    .com { color: #AAA; }  /* a comment */
+    .typ { color: #FFAA3E; }  /* a type name */
+    .lit { color: #0A0; }  /* a literal value */
+    /* punctuation, lisp open bracket, lisp close bracket */
+    .pun, .opn, .clo { color: #5BA1CF; }
+    .tag { color: #FFAA3E; }  /* a markup tag name */
+    .atn { color: #C0C; }  /* a markup attribute name */
+    .atv { color: #0B0; }  /* a markup attribute value */
+    .dec, .var { color: #C0C; }  /* a declaration; a variable name */
+    .fun { color: #FFAA3E; }  /* a function name */
+
+    pre ol {
+        color: #777;
+        margin-bottom: 0;
+    }
+}
+
+/* Use higher contrast and text-weight for printable form. */
+@media print, projection {
+    .str { color: #060; }
+    .kwd { color: #006; font-weight: bold; }
+    .com { color: #600; font-style: italic; }
+    .typ { color: #404; font-weight: bold; }
+    .lit { color: #044 }
+    .pun, .opn, .clo { color: #440; }
+    .tag { color: #006; font-weight: bold; }
+    .atn { color: #404; }
+    .atv { color: #060; }
+}
