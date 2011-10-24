@@ -79,7 +79,7 @@ SS.prototype = {
         document.addEventListener('keypress', this._fn.keypress, false);
         document.addEventListener('keyup', this._fn.keyup, false);
         document.addEventListener('touchstart', this._fn.touchstart, false);
-        window.addEventListener('hashchange', this._fn.readUrl, false);
+        window.addEventListener('hashchange', this._fn.hashchange, false);
     },
 
     removeListeners: function () {
@@ -87,7 +87,7 @@ SS.prototype = {
         document.removeEventListener('keypress', this._fn.keypress, false);
         document.removeEventListener('keyup', this._fn.keyup, false);
         document.removeEventListener('touchstart', this._fn.touchstart, false);
-        window.removeEventListener('hashchange', this._fn.readUrl, false);
+        window.removeEventListener('hashchange', this._fn.hashchange, false);
     },
 
     advance: function (count) {
