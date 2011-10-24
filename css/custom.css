@@ -106,3 +106,13 @@ code.prettyprint {
         right: 0;
         text-align: right;
     }
+
+ul.icons {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+    ul.icons li {
+        list-style-type: none;
+        display: inline-block;
+    }
