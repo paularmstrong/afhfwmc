@@ -61,3 +61,24 @@ pre {
     .atn { color: #404; }
     .atv { color: #060; }
 }
+
+.meter {
+    display: inline-block;
+    width: 200px;
+    height: 24px;
+    background: #FFF;
+    position: relative;
+}
+    .meter .meterValue {
+        display: inline-block;
+        width: 0;
+        height: 24px;
+        overflow: visible;
+        background: #000;
+    }
+    .meter .meterProgress {
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        text-align: right;
+    }

@@ -1,9 +1,13 @@
 var SS = function () {
-    document.addEventListener('keydown', _.bind(this.keydown, this), false);
-    document.addEventListener('keypress', _.bind(this.keypress, this), false);
-    document.addEventListener('keyup', _.bind(this.keyup, this), false);
-    document.addEventListener('touchstart', _.bind(this.touchstart, this), false);
-    window.addEventListener('hashchange', _.bind(this.readUrl, this), false);
+    var self = this;
+    this._fn = {
+        'keydown': _.bind(this.keydown, this),
+        'keypress': _.bind(this.keypress, this),
+        'keyup': _.bind(this.keyup, this),
+        'touchstart': _.bind(this.touchstart, this),
+        'hashchange': _.bind(this.readUrl, this)
+    };
+    this.addListeners();
 
     this.currentSection = 0;
     this.currentSlide = 0;
@@ -70,6 +74,22 @@ var SS = function () {
     this.readUrl();
 };
 SS.prototype = {
+    addListeners: function () {
+        document.addEventListener('keydown', this._fn.keydown, false);
+        document.addEventListener('keypress', this._fn.keypress, false);
+        document.addEventListener('keyup', this._fn.keyup, false);
+        document.addEventListener('touchstart', this._fn.touchstart, false);
+        window.addEventListener('hashchange', this._fn.readUrl, false);
+    },
+
+    removeListeners: function () {
+        document.removeEventListener('keydown', this._fn.keydown, false);
+        document.removeEventListener('keypress', this._fn.keypress, false);
+        document.removeEventListener('keyup', this._fn.keyup, false);
+        document.removeEventListener('touchstart', this._fn.touchstart, false);
+        window.removeEventListener('hashchange', this._fn.readUrl, false);
+    },
+
     advance: function (count) {
         var section = this.currentSection,
             articles = this.articles[section],

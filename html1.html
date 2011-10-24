@@ -239,22 +239,42 @@
         </header>
 
         <section>
-            <h1>Name As Many HTML Elements As You Can in 5 Minutes</h1>
+            <h1>Name All HTML4 Elements</h1>
 
-            <input type="text" name="htmlElement">
-            <button id="htmlStart">Go!</button>
+            <input type="text" id="htmlElement" name="htmlElement">
+            <button type="button" id="htmlStart">Go!</button>
+            <button type="cancel" id="htmlCancel">Cancel</button>
+            <span class="meter" id="htmlProgress"><span class="meterValue"></span><span class="meterProgress"><span>0</span> of <span>91</span></span></span>
+            <output for="htmlElement"></output>
             <script>
             (function() {
-                var htmlEls = ['a', 'abbr', 'acronym', 'address', 'applet', 'area', 'b', 'base', 'basefont', 'bdo', 'big', 'blockquote', 'body', 'br', 'button', 'caption', 'center', 'cite', 'code', 'col', 'colgroup', 'dd', 'del', 'dfn', 'dir', 'div', 'dl', 'dt', 'em', 'fieldset', 'font', 'form', 'frame', 'frameset', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'isindex', 'kbd', 'label', 'legend', 'li', 'link', 'map', 'menu', 'meta', 'noframes', 'noscript', 'object', 'ol', 'optgroup', 'option', 'p', 'param', 'pre', 'q', 's', 'samp', 'script', 'select', 'small', 'span', 'strike', 'strong', 'style', 'sub', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'title', 'tr', 'tt', 'u', 'ul', 'var'],
-                    timer,
-                    input = document.querySelector('#htmlElemet');
+                var allElements = ['a', 'abbr', 'acronym', 'address', 'applet', 'area', 'b', 'base', 'basefont', 'bdo', 'big', 'blockquote', 'body', 'br', 'button', 'caption', 'center', 'cite', 'code', 'col', 'colgroup', 'dd', 'del', 'dfn', 'dir', 'div', 'dl', 'dt', 'em', 'fieldset', 'font', 'form', 'frame', 'frameset', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'isindex', 'kbd', 'label', 'legend', 'li', 'link', 'map', 'menu', 'meta', 'noframes', 'noscript', 'object', 'ol', 'optgroup', 'option', 'p', 'param', 'pre', 'q', 's', 'samp', 'script', 'select', 'small', 'span', 'strike', 'strong', 'style', 'sub', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'title', 'tr', 'tt', 'u', 'ul', 'var'],
+                    progress = document.querySelector('#htmlProgress'),
+                    value = progress.querySelector('.meterValue'),
+                    count = progress.querySelector('.meterProgress span:first-child'),
+                    input = document.querySelector('#htmlElement'),
+                    output = document.querySelector('output[for=htmlElement]');
 
                 document.querySelector('#htmlStart').addEventListener('click', function () {
+                    var els = allElements;
+                    SS.instance.removeListeners();
+                    progress.value = 0;
                     input.addEventListener('keyup', function () {
-                        if (_.indexOf(htmlEls, input.value) !== -1) {
+                        var out = [];
+                        if (_.indexOf(els, input.value) !== -1) {
+                            els = _.without(els, input.value);
                             input.value = '';
+
+                            value.style.width = ((allElements.length - els.length) / allElements.length) * progress.offsetWidth + 'px';
+                            count.innerText = allElements.length - els.length;
+
+                            output.value = _.difference(allElements, els).sort().join(', ');
                         }
                     });
+                });
+
+                document.querySelector('#htmlCancel').addEventListener('click', function () {
+                    SS.instance.addListeners();
                 });
 
             })();
@@ -264,12 +284,41 @@
         <section>
             <h1>Name All HTML5 Elements</h1>
 
-            <input type="text" name="htmlElement">
-            <button id="htmlStart">Go!</button>
+            <input type="text" id="html5Element" name="html5Element">
+            <button type="button" id="html5Start">Go!</button>
+            <button type="cancel" id="html5Cancel">Cancel</button>
+            <span class="meter" id="html5Progress"><span class="meterValue"></span><span class="meterProgress"><span>0</span> of <span>108</span></span></span>
+            <output for="html5Element"></output>
             <script>
             (function() {
-                var allElements = ['a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b', 'base', 'bdi', 'bdo', 'blockquote', 'body', 'br', 'button', 'canvas', 'caption', 'cite', 'code', 'col', 'colgroup', 'command', 'datalist', 'dd', 'del', 'details', 'dfn', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'map', 'mark', 'menu', 'meta', 'meter', 'nav', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'script', 'section', 'select', 'small', 'source', 'span', 'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr', 'track', 'u', 'ul', 'var', 'video', 'wbr'];
+                var allElements = ['a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b', 'base', 'bdi', 'bdo', 'blockquote', 'body', 'br', 'button', 'canvas', 'caption', 'cite', 'code', 'col', 'colgroup', 'command', 'datalist', 'dd', 'del', 'details', 'dfn', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'map', 'mark', 'menu', 'meta', 'meter', 'nav', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'script', 'section', 'select', 'small', 'source', 'span', 'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr', 'track', 'u', 'ul', 'var', 'video', 'wbr'],
+                    progress = document.querySelector('#html5Progress'),
+                    value = progress.querySelector('.meterValue'),
+                    count = progress.querySelector('.meterProgress span:first-child'),
+                    input = document.querySelector('#html5Element'),
+                    output = document.querySelector('output[for=html5Element]');
 
+                document.querySelector('#html5Start').addEventListener('click', function () {
+                    var els = allElements;
+                    SS.instance.removeListeners();
+                    progress.value = 0;
+                    input.addEventListener('keyup', function () {
+                        var out = [];
+                        if (_.indexOf(els, input.value) !== -1) {
+                            els = _.without(els, input.value);
+                            input.value = '';
+
+                            value.style.width = ((allElements.length - els.length) / allElements.length) * progress.offsetWidth + 'px';
+                            count.innerText = allElements.length - els.length;
+
+                            output.value = _.difference(allElements, els).sort().join(', ');
+                        }
+                    });
+                });
+
+                document.querySelector('#html5Cancel').addEventListener('click', function () {
+                    SS.instance.addListeners();
+                });
             })();
             </script>
         </section>
