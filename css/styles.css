@@ -208,8 +208,13 @@ body > footer {
     }
 
 .present p,
+.present h2,
+.present h3,
 .present div,
-.present li {
+.present li,
+.present span,
+.present ul,
+.present ol {
     -webkit-transition: opacity 400ms ease-in-out;
     -moz-transition: opacity 400ms ease-in-out;
     -ms-transition: opacity 400ms ease-in-out;

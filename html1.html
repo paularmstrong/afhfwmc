@@ -322,6 +322,97 @@
             })();
             </script>
         </section>
+
+        <section>
+            <h1>The Basics</h1>
+
+            <ul>
+                <li class="step">Start with the doctype: <code class="prettyprint lang-html">&lt;!doctype html&gt;</code>.</li>
+                <li class="step">Then, <strong>one</strong> <code class="prettyprint lang-html">&lt;html&gt;&lt;/html&gt;</code> element per document.</li>
+                <li class="step">
+                    <strong>One</strong> <code class="prettyprint lang-html">&lt;head&gt;&lt;/head&gt;</code> element as the first child of the <code>html</code> element.
+                    <ul class="step">
+                        <li>Meta information goes here.</li>
+                    </ul>
+                </li>
+                <li class="step">
+                    <strong>One</strong> <code class="prettyprint lang-html">&lt;body&gt;&lt;/body&gt;</code> element immediately following the <code>head</code> element.
+                    <ul class="step">
+                        <li>Visible content goes here.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </article>
+
+    <article>
+        <header>
+            <h1>Semantics</h1>
+            <h2 class="step">Why bother?</h2>
+        </header>
+
+        <section>
+            <h1>Elements Have Specific Meaning</h1>
+
+            <blockquote><p>The <code>p</code> element represents a paragraph.</p></blockquote>
+            <blockquote><p>The <code>ul</code> element represents a list of items, where the order of the items is not important — that is, where changing the order would not materially change the meaning of the document.</p></blockquote>
+
+            <blockquote><p>The <code>em</code> element represents stress emphasis of its contents.</p></blockquote>
+            <blockquote><p>The <code>i</code> element represents a span of text in an alternate voice or mood, or otherwise offset from the normal prose in a manner indicating a different quality of text, such as a taxonomic designation, a technical term, an idiomatic phrase from another language, a thought, or a ship name in Western texts.</p></blockquote>
+
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/index.html">http://www.whatwg.org/specs/web-apps/current-work/multipage/index.html</a></li>
+                </ol>
+            </div>
+        </section>
+
+        <section>
+            <h1>Accessibility</h1>
+
+            <h2>Screen Readers</h2>
+            <ul>
+                <li>Scan contextually by headings <code>h1-h6</code></li>
+                <li>Change vocal tone in quotes: <code class="prettyprint lang-html">&lt;blockquote&gt;</code> and <code class="prettyprint lang-html">&lt;q&gt;</code></li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Crawlers</h1>
+
+            <ul>
+                <li>Pick out headings.</li>
+                <li>Find <em>meaningful</em> document content.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Future-Proofing</h1>
+            <h2 class="step">For Your Fellow Developer</h2>
+            <ul class="step">
+                <li>Easier to scan</li>
+                <li>Faster to learn</li>
+                <li>Markup includes intentions</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Ignore The Designer</h1>
+
+            <h2>Don't Ask</h2>
+            <ul>
+                <li>How should this look?</li>
+                <li>What does this say?</li>
+            </ul>
+
+            <div class="step">
+                <h2>Ask</h2>
+                <ul>
+                    <li>What kind of content is this?</li>
+                </ul>
+            </div>
+        </section>
+
     </article>
 
     <footer>
