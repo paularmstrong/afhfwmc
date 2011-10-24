@@ -15,11 +15,11 @@
         margin: 0 auto;
     }
     .boxModel div {
-        -webkit-transition: background-color 200ms ease-in-out;
-        -moz-transition: background-color 200ms ease-in-out;
-        -ms-transition: background-color 200ms ease-in-out;
-        -o-transition: background-color 200ms ease-in-out;
-        transition: background-color 200ms ease-in-out;
+        -webkit-transition: background-color 200ms ease-in-out, -webkit-box-shadow 200ms ease-in-out;
+        -moz-transition: background-color 200ms ease-in-out, -moz-box-shadow 200ms ease-in-out;
+        -ms-transition: background-color 200ms ease-in-out, -ms-box-shadow 200ms ease-in-out;
+        -o-transition: background-color 200ms ease-in-out, -o-box-shadow 200ms ease-in-out;
+        transition: background-color 200ms ease-in-out, box-shadow 200ms ease-in-out;
         padding: 10px 50px 50px;
         margin: 10px 0 0;
         text-align: center;
@@ -29,6 +29,11 @@
     }
         .boxModel div.hover {
             background-color: rgba(0,255,255,1);
+            -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+            -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+            -ms-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+            -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+            box-shadow: 0 0 10px rgba(0,0,0,0.6);
         }
         .boxModel .bmMargin {
             background: rgba(255,255,255,0.2);
