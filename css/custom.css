@@ -25,6 +25,7 @@ cite {
 
 pre,
 code.prettyprint {
+    overflow: auto;
     font-family: Monaco, "Courier New", Courier, monospace;
     padding: 10px;
     color: #FFF;

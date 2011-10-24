@@ -388,12 +388,39 @@
 
         <section>
             <h1>Future-Proofing</h1>
-            <h2 class="step">For Your Fellow Developer</h2>
-            <ul class="step">
+            <ul>
                 <li>Easier to scan</li>
                 <li>Faster to learn</li>
                 <li>Markup includes intentions</li>
             </ul>
+
+            <pre class="step prettyprint lang-html"><code>&lt;div class="button"&gt;Cancel&lt;/div&gt;
+
+&lt;button&gt;Cancel&lt;/button&gt;</code></pre>
+        </section>
+
+        <section>
+            <h1>Don't Re-Implement</h1>
+
+            <pre class="prettyprint lang-html"><code>&lt;div class=&quot;article&quot;&gt;
+    &lt;div class=&quot;header&quot;&gt;
+        &lt;div class=&quot;h1&quot;&gt;My Article&lt;/div&gt;
+        &lt;div class=&quot;postdate&quot;&gt;October 24th, 2011&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;section&quot;&gt;
+        &lt;div&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+            <pre class="prettyprint lang-html"><code>&lt;article&gt;
+    &lt;header&gt;
+        &lt;h1&gt;My Article&lt;/h1&gt;
+        &lt;time pubdate datetime=&quot;2011-10-24&quot;&gt;October 24th, 2011&lt;/time&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+        &lt;p&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/article&gt;</code></pre>
         </section>
 
         <section>
