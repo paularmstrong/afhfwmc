@@ -20,13 +20,42 @@
         -ms-transition: background-color 200ms ease-in-out, -ms-box-shadow 200ms ease-in-out;
         -o-transition: background-color 200ms ease-in-out, -o-box-shadow 200ms ease-in-out;
         transition: background-color 200ms ease-in-out, box-shadow 200ms ease-in-out;
-        padding: 10px 50px 50px;
-        margin: 10px 0 0;
-        text-align: center;
+        padding: 20px 70px 70px;
+        margin: 20px 0 0;
         border: 2px solid #000;
         background: #FFF;
         font-weight: bold;
+        position: relative;
     }
+        .boxModel div span.bmTop,
+        .boxModel div span.bmRight,
+        .boxModel div span.bmBottom,
+        .boxModel div span.bmLeft {
+            position: absolute;
+            font-weight: normal;
+            font-size: 0.8em;
+            opacity: 0.5;
+        }
+            .boxModel div span.bmTop { top: 0; left: 50%; }
+            .boxModel div span.bmRight {
+                top: 50%;
+                right: 0;
+                -webkit-transform: rotate(90deg);
+                -moz-transform: rotate(90deg);
+                -ms-transform: rotate(90deg);
+                -o-transform: rotate(90deg);
+                transform: rotate(90deg);
+            }
+            .boxModel div span.bmBottom { bottom: 0; left: 50%; }
+            .boxModel div span.bmLeft {
+                top: 50%;
+                left: 0;
+                -webkit-transform: rotate(-90deg);
+                -moz-transform: rotate(-90deg);
+                -ms-transform: rotate(-90deg);
+                -o-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+            }
         .boxModel div.hover {
             background-color: rgba(0,255,255,1);
             -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
@@ -35,6 +64,10 @@
             -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
             box-shadow: 0 0 10px rgba(0,0,0,0.6);
         }
+            .boxModel div.hover  span.bmTop,
+            .boxModel div.hover  span.bmRight,
+            .boxModel div.hover  span.bmBottom,
+            .boxModel div.hover  span.bmLeft { opacity: 1; }
         .boxModel .bmMargin {
             background: rgba(255,255,255,0.2);
             border: 2px dotted rgba(0,0,0,0.2);
@@ -49,6 +82,8 @@
         }
         .boxModel .bmContent {
             border: none;
+            padding: 20px;
+            height: 60px;
         }
     </style>
 
@@ -74,11 +109,25 @@
             <figure class="boxModel">
                 <div class="bmMargin">
                     Margin
+                    <span class="bmTop">margin-top</span>
+                    <span class="bmRight">margin-right</span>
+                    <span class="bmBottom">margin-bottom</span>
+                    <span class="bmLeft">margin-left</span>
                     <div class="bmBorder">
                         Border
+                        <span class="bmTop">border-top</span>
+                        <span class="bmRight">border-right</span>
+                        <span class="bmBottom">border-bottom</span>
+                        <span class="bmLeft">border-left</span>
                         <div class="bmPadding">
                             Padding
+                            <span class="bmTop">padding-top</span>
+                            <span class="bmRight">padding-right</span>
+                            <span class="bmBottom">padding-bottom</span>
+                            <span class="bmLeft">padding-left</span>
                             <div class="bmContent">
+                                <span class="bmTop">width</span>
+                                <span class="bmRight">height</span>
                                 Content
                             </div>
                         </div>
@@ -111,6 +160,66 @@
                 </ol>
             </div>
         </section>
+
+        <section>
+            <h1>Calculating Box Size</h1>
+
+            <ul>
+                <li><code>offsetWidth</code>, <code>offsetHeight</code></li>
+                <li><code>clientWidth</code>, <code>clientHeight</code></li>
+                <li><code>scrollWidth</code>, <code>scrollHeight</code></li>
+            </ul>
+
+            <div class="step">
+                <h2>width<span class="step">, aka: <em>offsetWidth</em></span></h2>
+                <pre>width + padding-left + padding-right + border-left + border-right</pre>
+
+                <h2>height<span class="step">, aka: <em>offsetHeight</em></span></h2>
+                <pre>height + padding-top + padding-bottom + border-top + border-bottom</pre>
+            </div>
+        </section>
+
+        <section>
+            <h1>Block Width</h1>
+
+            <p>// TODO: illustration of block width calculation vs (100% + padding) example</p>
+        </section>
+
+        <section>
+            <h1>Block Height</h1>
+
+            <p>// TODO: auto height vs declared height vs parent height</p>
+        </section>
+
+        <section>
+            <h1>Absolute Positioned Elements</h1>
+
+            <p>// TODO: auto width vs width when text wraps</p>
+        </section>
+
+        <section>
+            <h1>Inline Elements</h1>
+
+            <p>// TODO: affect of padding, margin, width on an inline element</p>
+        </section>
+
+        <section>
+            <h1>Inline-Block Elements</h1>
+
+            <p>// TODO: inline-block elements are rad</p>
+        </section>
+    </article>
+
+    <article>
+        <header>
+            <h1>CSS Selectors</h1>
+        </header>
+    </article>
+
+    <article>
+        <header>
+            <h1>Property Styles</h1>
+        </header>
     </article>
 
     <footer>
