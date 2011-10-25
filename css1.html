@@ -89,6 +89,7 @@
 
     <script src="js/underscore.js"></script>
     <script src="js/master.js"></script>
+    <script src="js/prettify/prettify.js"></script>
 </head>
 <body>
 
@@ -182,31 +183,31 @@
         <section>
             <h1>Block Width</h1>
 
-            <p>// TODO: illustration of block width calculation vs (100% + padding) example</p>
+            <!-- TODO: illustration of block width calculation vs (100% + padding) example -->
         </section>
 
         <section>
             <h1>Block Height</h1>
 
-            <p>// TODO: auto height vs declared height vs parent height</p>
+            <!-- TODO: auto height vs declared height vs parent height -->
         </section>
 
         <section>
             <h1>Absolute Positioned Elements</h1>
 
-            <p>// TODO: auto width vs width when text wraps</p>
+            <!-- TODO: auto width vs width when text wraps -->
         </section>
 
         <section>
             <h1>Inline Elements</h1>
 
-            <p>// TODO: affect of padding, margin, width on an inline element</p>
+            <!-- TODO: affect of padding, margin, width on an inline element -->
         </section>
 
         <section>
             <h1>Inline-Block Elements</h1>
 
-            <p>// TODO: inline-block elements are rad</p>
+            <!-- TODO: inline-block elements are rad -->
         </section>
     </article>
 
@@ -214,6 +215,119 @@
         <header>
             <h1>CSS Selectors</h1>
         </header>
+
+        <section>
+            <h1>CSS2 Selectors</h1>
+
+            <ul>
+                <li>Universal</li>
+                <li>Type</li>
+                <li>Descendant</li>
+                <li>Child</li>
+                <li>Pseudo-Class</li>
+                <li>Adjacent</li>
+                <li>Attribute</li>
+                <li>Class</li>
+                <li>ID</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Simple Selectors</h1>
+
+            <h2>Universal Selector</h2>
+            <p>Everything.</p>
+            <pre class="prettyprint lang-css">*</pre>
+
+            <h2>Type Selector</h2>
+            <p>Any element of type <code>E</code>.</p>
+            <pre class="prettyprint lang-css">E</pre>
+
+            <h2>Descendant Selector</h2>
+            <p>Any element of type <code>F</code> that is a descendant of any element of type <code>E</code>.</p>
+            <pre class="prettyprint lang-css">E F</pre>
+        </section>
+
+        <section>
+            <h1>Common</h1>
+
+            <h2>Class Selector</h2>
+            <p>Any element with class <code>foo</code>.</p>
+            <pre class="prettyprint lang-css">.foo</pre>
+            <pre class="prettyprint lang-html">&lt;div class="foo"&gt;&lt;/div&gt;</pre>
+
+            <h2>ID Selector</h2>
+            <p>Any element with ID <code>foo</code>.</p>
+            <pre class="prettyprint lang-css">#foo</pre>
+            <pre class="prettyprint lang-html">&lt;div id="foo"&gt;&lt;/div&gt;</pre>
+        </section>
+
+        <section>
+            <h1>MOAR</h1>
+
+            <h2>Child Selector</h2>
+            <p>Any element <code>F</code> that is direct-descendent child of <code>E</code>.</p>
+            <pre class="prettyprint lang-css">E > F</pre>
+            <pre class="prettyprint lang-html">&lt;E&gt;&lt;F&gt;foobar!&lt;/F&gt;&lt;/E&gt;</pre>
+
+            <h2>Adjacent Selector</h2>
+            <p>Any element <code>F</code> that is immediately preceded by a sibling <code>E</code>.</p>
+            <pre class="prettyprint lang-css">E + F</pre>
+            <pre class="prettyprint lang-html">&lt;E&gt;foo&lt;/E&gt; &lt;F&gt;bar&lt;/F&gt;</pre>
+        </section>
+
+        <section>
+            <h1>Pseudo</h1>
+
+            <ul>
+                <li><pre class="prettyprint lang-css">E:first-child</pre></li>
+                <li>
+                    Link (one of)
+                    <ul>
+                        <li><pre class="prettyprint lang-css">E:link</pre></li>
+                        <li><pre class="prettyprint lang-css">E:visited</pre></li>
+                    </ul>
+                </li>
+                <li>
+                    Dynamic (one of)
+                    <ul>
+                        <li><pre class="prettyprint lang-css">E:hover</pre></li>
+                        <li><pre class="prettyprint lang-css">E:active</pre></li>
+                        <li><pre class="prettyprint lang-css">E:focus</pre></li>
+                    </ul>
+                </li>
+                <li><pre class="prettyprint lang-css">E:lang(c)</pre></li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>Attributes!</h1>
+
+            <p>Has an attribute <code>foo</code>.</p>
+            <pre class="prettyprint lang-css">E[foo]</pre>
+
+            <p>Has an attribute <code>foo</code> that is set to <code>bar</code>.</p>
+            <pre class="prettyprint lang-css">E[foo="bar"]</pre>
+
+            <p>Has an attribute <code>foo</code> that is <em>space-separated tokens</em>, one of which is <code>bar</code>.</p>
+            <pre class="prettyprint lang-css">E[foo~="bar"]</pre>
+
+            <p>Has an attribute <code>foo</code> that is <em>hyphen-separated tokens</em>, and starts with <code>bar</code>.</p>
+            <pre class="prettyprint lang-css">E[foo|="bar"]</pre>
+        </section>
+
+        <section>
+            <h1>Gimme MOAR</h1>
+
+            <p class="step">Okay</p>
+            <pre class="prettyprint lang-css step"><code>body > section article:first-of-type ul li:nth-child(odd)::before</code></pre>
+
+            <div class="sources">
+                <ul><li><a href="http://www.w3.org/TR/selectors/#selectors">http://www.w3.org/TR/selectors/#selectors</a></li></ul>
+            </div>
+        </section>
+
+        <!-- TODO: CSS selector exercises -->
     </article>
 
     <article>
@@ -225,6 +339,10 @@
     <footer>
         <h1>All Done</h1>
     </footer>
+
+    <script>
+    prettyPrint();
+    </script>
 
 </body>
 </html>
