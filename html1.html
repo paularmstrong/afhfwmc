@@ -291,7 +291,7 @@
             <output for="html5Element"></output>
             <script>
             (function() {
-                var allElements = ['a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b', 'base', 'bdi', 'bdo', 'blockquote', 'body', 'br', 'button', 'canvas', 'caption', 'cite', 'code', 'col', 'colgroup', 'command', 'datalist', 'dd', 'del', 'details', 'dfn', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'map', 'mark', 'menu', 'meta', 'meter', 'nav', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'script', 'section', 'select', 'small', 'source', 'span', 'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr', 'track', 'u', 'ul', 'var', 'video', 'wbr'],
+                var allElements = ['a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b', 'base', 'bdi', 'bdo', 'blockquote', 'body', 'br', 'button', 'canvas', 'caption', 'cite', 'code', 'col', 'colgroup', 'command', 'data', 'datalist', 'dd', 'del', 'details', 'dfn', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'map', 'mark', 'menu', 'meta', 'meter', 'nav', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'script', 'section', 'select', 'small', 'source', 'span', 'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'title', 'tr', 'track', 'u', 'ul', 'var', 'video', 'wbr'],
                     progress = document.querySelector('#html5Progress'),
                     value = progress.querySelector('.meterValue'),
                     count = progress.querySelector('.meterProgress span:first-child'),
@@ -352,13 +352,15 @@
         </header>
 
         <section>
-            <h1>Elements Have Specific Meaning</h1>
+            <h1>Elements Have Meaning</h1>
 
-            <blockquote><p>The <code>p</code> element represents a paragraph.</p></blockquote>
-            <blockquote><p>The <code>ul</code> element represents a list of items, where the order of the items is not important — that is, where changing the order would not materially change the meaning of the document.</p></blockquote>
+            <blockquote class="step"><p>The <code>p</code> element represents a paragraph.</p></blockquote>
+            <blockquote class="step"><p>The <code>ul</code> element represents a list of items, where the order of the items is not important — that is, where changing the order would not materially change the meaning of the document.</p></blockquote>
 
-            <blockquote><p>The <code>em</code> element represents stress emphasis of its contents.</p></blockquote>
-            <blockquote><p>The <code>i</code> element represents a span of text in an alternate voice or mood, or otherwise offset from the normal prose in a manner indicating a different quality of text, such as a taxonomic designation, a technical term, an idiomatic phrase from another language, a thought, or a ship name in Western texts.</p></blockquote>
+            <hr class="step">
+
+            <blockquote class="step"><p>The <code>em</code> element represents stress emphasis of its contents.</p></blockquote>
+            <blockquote class="step"><p>The <code>i</code> element represents a span of text in an alternate voice or mood, or otherwise offset from the normal prose in a manner indicating a different quality of text, such as a taxonomic designation, a technical term, an idiomatic phrase from another language, a thought, or a ship name in Western texts.</p></blockquote>
 
             <div class="sources">
                 <ol>
@@ -411,7 +413,9 @@
         &lt;div&gt;Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
+        </section>
 
+        <section>
             <pre class="prettyprint lang-html"><code>&lt;article&gt;
     &lt;header&gt;
         &lt;h1&gt;My Article&lt;/h1&gt;
@@ -440,12 +444,28 @@
             </div>
         </section>
 
+        <!-- TODO: Example and walkthrough of asking "what kind of content?" -->
+
     </article>
 
     <article>
         <header>
-            <h1>Validate HTML</h1>
+            <hgroup>
+                <h1>Validate HTML</h1>
+                <h2 class="step"><q>But I know what I'm doing!</q></h2>
+            </hgroup>
         </header>
+
+        <section>
+            <h1>What About These Guys?</h1>
+            <ul class="icons">
+                <li><img src="images/browser-safari.png" alt="Safari" /></li>
+                <li><img src="images/browser-chrome.png" alt="Chrome" /></li>
+                <li><img src="images/browser-firefox.png" alt="Firefox" /></li>
+                <li><img src="images/browser-opera.png" alt="Opera" /></li>
+                <li><img src="images/browser-ie.png" alt="Internet Explorer" /></li>
+            </ul>
+        </section>
 
         <section>
             <h1>#1 Debugging Tool</h1>
