@@ -184,6 +184,7 @@
             <h1>Block Width</h1>
 
             <!-- TODO: illustration of block width calculation vs (100% + padding) example -->
+            <!-- http://css-tricks.com/2841-the-css-box-model/ -->
         </section>
 
         <section>
@@ -328,6 +329,80 @@
         </section>
 
         <!-- TODO: CSS selector exercises -->
+    </article>
+
+    <article>
+        <header>
+            <h1>Selector Priority</h1>
+        </header>
+
+        <section>
+            <h1>Simplest Terms</h1>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Selector</th>
+                        <th>Weight</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Universal</td>
+                        <td>1</td>
+                        <td><code class="prettyprint lang-css">*</code></td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>10</td>
+                        <td><code class="prettyprint lang-css">E</code></td>
+                    </tr>
+                    <tr>
+                        <td>Class</td>
+                        <td>100</td>
+                        <td><code class="prettyprint lang-css">.foo</code></td>
+                    </tr>
+                    <tr>
+                        <td>ID</td>
+                        <td>1000</td>
+                        <td><code class="prettyprint lang-css">#bar</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h1>Exercise</h1>
+            <pre class="prettyprint lang-css">div { color: red; }
+div.bar { color: green; }
+p.bar { color: white; }
+.bar { color: cyan; }
+#foo.bar .bar { color: blue; }
+#foo.bar p { color: yellow; }
+#foo .bar { color: black; }</pre>
+            <div class="step">
+                <pre class="prettyprint lang-html">&lt;div id=&quot;foo&quot; class=&quot;bar&quot;&gt;
+    &lt;p class=&quot;bar&quot;&gt;Hello World&lt;/p&gt;
+&lt;/div&gt;</pre>
+            </div>
+            <p class="step" style="color: blue">Answer: Blue</p>
+        </section>
+
+        <!--
+        *             {}  /* a=0 b=0 c=0 d=0 -> specificity = 0,0,0,0 */
+        li            {}  /* a=0 b=0 c=0 d=1 -> specificity = 0,0,0,1 */
+        li:first-line {}  /* a=0 b=0 c=0 d=2 -> specificity = 0,0,0,2 */
+        ul li         {}  /* a=0 b=0 c=0 d=2 -> specificity = 0,0,0,2 */
+        ul ol+li      {}  /* a=0 b=0 c=0 d=3 -> specificity = 0,0,0,3 */
+        h1 + *[rel=up]{}  /* a=0 b=0 c=1 d=1 -> specificity = 0,0,1,1 */
+        ul ol li.red  {}  /* a=0 b=0 c=1 d=3 -> specificity = 0,0,1,3 */
+        li.red.level  {}  /* a=0 b=0 c=2 d=1 -> specificity = 0,0,2,1 */
+        #x34y         {}  /* a=0 b=1 c=0 d=0 -> specificity = 0,1,0,0 */
+        style=""          /* a=1 b=0 c=0 d=0 -> specificity = 1,0,0,0 */
+        -->
+
+
     </article>
 
     <article>
