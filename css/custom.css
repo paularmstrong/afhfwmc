@@ -8,13 +8,13 @@ article header, .title {
         vertical-align: middle;
         margin-right: -0.25em;
     }
-    article header>h1, article header hgroup, .title h1 {
+    article header>h1, article header hgroup, .title > * {
         display: inline-block;
         text-align: center;
         vertical-align: middle;
         width: 100%;
     }
-    article>header hgroup * { text-align: center; }
+    article>header hgroup *, .title * { text-align: center; }
 
 abbr:after {
     display: inline-block;

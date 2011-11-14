@@ -67,7 +67,71 @@
             <h1>Prototypal Inheritance</h1>
         </header>
 
-        <!-- TODO: Prototypal Inheritance -->
+        <section>
+            <h1>Classes vs. Prototypes</h1>
+            <dl>
+                <dt>Classes</dt>
+                <dd>Type of data and functionality of objects.</dd>
+
+                <dt>Prototypes</dt>
+                <dd>Collections of behavior and structure for all instances.</dd>
+            </dl>
+        </section>
+
+        <section>
+            <blockquote cite="http://bonsaiden.github.com/JavaScript-Garden/#object.prototype"><p>When accessing the properties of an object, JavaScript will traverse the prototype chain upwards until it finds a property with the requested name.</p></blockquote>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://bonsaiden.github.com/JavaScript-Garden/#object.prototype">http://bonsaiden.github.com/JavaScript-Garden/#object.prototype</a></li>
+                </ol>
+            </div>
+        </section>
+
+        <section>
+            <pre class="prettyprint lang-js" style="font-size: 20px; line-height: 23px">function Foo() {
+    this.value = 42;
+}
+Foo.prototype = {
+    method: function() {}
+};
+
+function Bar() {}
+
+// Set Bar's prototype to a new instance of Foo
+Bar.prototype = new Foo();
+Bar.prototype.foo = 'Hello World';
+
+// Make sure to list Bar as the actual constructor
+Bar.prototype.constructor = Bar;
+
+var test = new Bar() // create a new bar instance
+
+// The resulting prototype chain
+test [instance of Bar]
+    Bar.prototype [instance of Foo]
+        { foo: 'Hello World' }
+        Foo.prototype
+            { method: ... }
+            Object.prototype
+                { toString: ... /* etc. */ }</pre>
+            <!-- http://bonsaiden.github.com/JavaScript-Garden/#object.prototype -->
+        </section>
+
+        <section>
+            <div  class="title">
+                <figure>
+                    <img src="/images/prototype-inheritance.gif" alt="Object/Prototype Relationships">
+                    <figcaption>Object/Prototype Relationships</figcaption>
+                </figure>
+
+                <!-- Unlike class-based object languages, properties can be added to objects dynamically by assigning values to them. That is, constructors are not required to name or assign values to all or any of the constructed object’s properties. In the above diagram, one could add a new shared property for cf1, cf2, cf3, cf4, and cf5 by assigning a new value to the property in CFp. -->
+            </div>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://es5.github.com/#x4.2.1">http://es5.github.com/#x4.2.1</a></li>
+                </ol>
+            </div>
+        </section>
     </article>
 
     <article>
