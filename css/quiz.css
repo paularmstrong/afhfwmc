@@ -1,0 +1,49 @@
+html,body,textarea,input,select,button,legend{font:16px/20px 'Droid Sans',Helvetica,Arial,Verdana,sans-serif;color:#333;line-height:1.2em;}
+
+body {
+    padding: 40px 0;
+    max-width: 768px;
+    margin: 0 auto;
+}
+
+form {
+    margin: 0 0 24px;
+}
+
+pre {
+    overflow: visible;
+    /* Crazy Webkit bug: first element has overflow: auto, then the list-style-type doesn't display. WTF. */
+}
+
+ol, ul {
+    padding: 0 0 0 36px;
+    margin: 0 0 24px;
+}
+ol>li { list-style-type: decimal; }
+    ol>li ol>li { list-style-type: lower-alpha; }
+    ol>li ol>li ol>li { list-style-type: lower-roman; }
+ol ul>li {
+    list-style-type: upper-alpha;
+}
+
+p#results {
+    min-height: 1em;
+    margin: 0 0 24px;
+    padding: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2);
+    -moz-box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2);
+    -ms-box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2);
+    -o-box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2);
+    box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2);
+    color: #AAA;
+}
+
+p#results.good { color: #0B0; background-color: #AEDEB0; }
+p#results.ok { color: #00B; background-color: #8CDECF; }
+p#results.poor { color: #dea100; background-color: #DED6AF; }
+p#results.failure { color: #B00; background-color: #DE8688; }
