@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HTML Quiz 1</title>
+
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/quiz.css">
+
+    <style>
+    header {
+        -webkit-transition: all 400ms ease-in-out;
+        -moz-transition: all 400ms ease-in-out;
+        -ms-transition: all 400ms ease-in-out;
+        -o-transition: all 400ms ease-in-out;
+        transition: all 400ms ease-in-out;
+        overflow: hidden;
+    }
+    .hidden {
+        height: 0;
+        overflow: hidden;
+    }
+    #html4, #html5 {
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+        -webkit-transition: all 400ms ease-in-out;
+        -moz-transition: all 400ms ease-in-out;
+        -ms-transition: all 400ms ease-in-out;
+        -o-transition: all 400ms ease-in-out;
+        transition: all 400ms ease-in-out;
+    }
+    #html4.show, #html5.show {
+        opacity: 1;
+        height: auto;
+    }
+
+    output span {
+        color: #999;
+        font-style: italic;
+    }
+
+    input {
+        font-size: 32px;
+    }
+    </style>
+
+    <script src="/js/underscore.js"></script>
+    <script src="/js/prettify/prettify.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>The HTML Elements Quiz</h1>
+        <p>Take 5 minutes and name as many HTML elements as you can without using any outside sources (web, people, documents, source).</p>
+        <p>To start, select HTML4 or HTML5:</p>
+        <button id="html4but" type="button">HTML4</button> -or- <button id="html5but" type="button">HTML5</button>
+        <script>
+        (function() {
+            function selectQuiz(event) {
+                var type = document.querySelector('#' + event.target.getAttribute('id').replace('but', ''));
+                type.setAttribute('class', 'show');
+                type.querySelector('input').focus();
+                document.querySelector('header').setAttribute('hidden');
+            }
+            document.querySelector('#html4but').addEventListener('click', selectQuiz, false);
+            document.querySelector('#html5but').addEventListener('click', selectQuiz, false);
+        }());
+        </script>
+    </header>
+
+    <article id="html4">
+        <h1>Name All HTML4 Elements</h1>
+
+        <label for="htmlElement">Element:</label> <input type="text" id="htmlElement" name="htmlElement">
+        <h2>Progress</h2>
+        <p><span class="meter" id="htmlProgress"><span class="meterValue"></span><span class="meterProgress"><span>0</span> of <span>91</span></span></span></p>
+        <h2>Correct Elements</h2>
+        <p><output for="htmlElement"><span>none :(</span></output></p>
+        <script>
+        (function() {
+            var allElements = ['a', 'abbr', 'acronym', 'address', 'applet', 'area', 'b', 'base', 'basefont', 'bdo', 'big', 'blockquote', 'body', 'br', 'button', 'caption', 'center', 'cite', 'code', 'col', 'colgroup', 'dd', 'del', 'dfn', 'dir', 'div', 'dl', 'dt', 'em', 'fieldset', 'font', 'form', 'frame', 'frameset', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'isindex', 'kbd', 'label', 'legend', 'li', 'link', 'map', 'menu', 'meta', 'noframes', 'noscript', 'object', 'ol', 'optgroup', 'option', 'p', 'param', 'pre', 'q', 's', 'samp', 'script', 'select', 'small', 'span', 'strike', 'strong', 'style', 'sub', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'title', 'tr', 'tt', 'u', 'ul', 'var'],
+                progress = document.querySelector('#htmlProgress'),
+                value = progress.querySelector('.meterValue'),
+                count = progress.querySelector('.meterProgress span:first-child'),
+                input = document.querySelector('#htmlElement'),
+                output = document.querySelector('output[for=htmlElement]'),
+                els = allElements;
+
+            progress.value = 0;
+            input.addEventListener('keyup', function () {
+                var out = [];
+                if (_.indexOf(els, input.value) !== -1) {
+                    els = _.without(els, input.value);
+                    input.value = '';
+
+                    value.style.width = ((allElements.length - els.length) / allElements.length) * progress.offsetWidth + 'px';
+                    count.innerText = allElements.length - els.length;
+
+                    output.value = _.difference(allElements, els).sort().join(', ');
+                }
+            });
+
+        }());
+        </script>
+    </article>
+
+    <article id="html5">
+        <h1>Name All HTML5 Elements</h1>
+
+        <label for="html5Element">Element:</label> <input type="text" id="html5Element" name="html5Element">
+        <h2>Progress</h2>
+        <p><span class="meter" id="html5Progress"><span class="meterValue"></span><span class="meterProgress"><span>0</span> of <span>108</span></span></span></p>
+        <h2>Correct Elements</h2>
+        <p><output for="html5Element"><span>none :(</span></output></p>
+        <script>
+        (function() {
+            var allElements = ['a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b', 'base', 'bdi', 'bdo', 'blockquote', 'body', 'br', 'button', 'canvas', 'caption', 'cite', 'code', 'col', 'colgroup', 'command', 'datalist', 'dd', 'del', 'details', 'dfn', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'map', 'mark', 'menu', 'meta', 'meter', 'nav', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'script', 'section', 'select', 'small', 'source', 'span', 'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr', 'track', 'u', 'ul', 'var', 'video', 'wbr'],
+                progress = document.querySelector('#html5Progress'),
+                value = progress.querySelector('.meterValue'),
+                count = progress.querySelector('.meterProgress span:first-child'),
+                input = document.querySelector('#html5Element'),
+                output = document.querySelector('output[for=html5Element]'),
+                els = allElements;
+
+            progress.value = 0;
+            input.addEventListener('keyup', function () {
+                var out = [];
+                if (_.indexOf(els, input.value) !== -1) {
+                    els = _.without(els, input.value);
+                    input.value = '';
+
+                    value.style.width = ((allElements.length - els.length) / allElements.length) * progress.offsetWidth + 'px';
+                    count.innerText = allElements.length - els.length;
+
+                    output.value = _.difference(allElements, els).sort().join(', ');
+                }
+            });
+        }());
+        </script>
+    </article>
+
+
+</body>
+</html>

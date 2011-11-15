@@ -66,6 +66,66 @@
         </section>
 
         <section>
+            <h1>Bug 13240 - Consider replacing &lt;time&gt; with &lt;data&gt;</h1>
+
+            <p>On <time datetime="2011-10-29">October 29th, 2011</time>, the &lt;time&gt; element was removed from HTML5 and replaced with &lt;data&gt;, citing that &lt;time&gt; was too ambiguous and wasn't <q cite="http://www.w3.org/Bugs/Public/show_bug.cgi?id=13240">getting enough traction</q>.<sup>1</sup></p>
+
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.w3.org/Bugs/Public/show_bug.cgi?id=13240">http://www.w3.org/Bugs/Public/show_bug.cgi?id=13240</a></li>
+                </ol>
+            </div>
+        </section>
+
+        <section>
+            <blockquote cite="http://www.w3.org/Bugs/Public/show_bug.cgi?id=13240#c1"><p>There are several use cases for &lt;time&gt;:<br />A. Easier styling of dates and times from CSS.<br />B. A way to mark up the publication date/time for an article (e.g. for conversion to Atom).<br />C. A way to mark up machine-readable times and dates for use in Microformats or microdata.<br /><br />Use cases A and B do not seem to have much traction. Use case C applies to more than just dates, and the lack of solution for stuff outside dates and times is being problematic to many communities.</p></blockquote>
+            <p>&ndash;Ian Hickson, WhatWG Editor</p>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.w3.org/Bugs/Public/show_bug.cgi?id=13240#c1">http://www.w3.org/Bugs/Public/show_bug.cgi?id=13240#c1</a></li>
+                </ol>
+            </div>
+        </section>
+
+        <section>
+            <ul>
+                <li><q cite="http://www.w3.org/Bugs/Public/show_bug.cgi?id=13240#c8">I doubt any of HTML5 elements have much traction.</q><sup>1</sup></li>
+                <li><q cite="http://www.w3.org/Bugs/Public/show_bug.cgi?id=13240#c8">Of all elements in HTML5, time is the one that is least ambiguous</q><sup>1</sup></li>
+                <li><q cite="http://www.w3.org/Bugs/Public/show_bug.cgi?id=13240#c19">&lt;time&gt; *does* express something more useful than just &lt;data&gt; or &lt;meta&gt; in that it tells the UA that its contents are a datetime.  &lt;data&gt; would just tell the UA &quot;there is something here&quot; and would be semantically equivalent to &lt;span&gt;</q><sup>2</sup></li>
+            </ul>
+
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.w3.org/Bugs/Public/show_bug.cgi?id=13240#c8">http://www.w3.org/Bugs/Public/show_bug.cgi?id=13240#c8</a></li>
+                    <li><a href="http://www.w3.org/Bugs/Public/show_bug.cgi?id=13240#c19">http://www.w3.org/Bugs/Public/show_bug.cgi?id=13240#c19</a></li>
+                </ol>
+            </div>
+        </section>
+
+        <section>
+            <iframe width="100%" height="100%" frameborder="0" src="http://whynotime.com/"></iframe>
+        </section>
+
+        <section>
+            <h1>And it's Back!</h1>
+            <p>On <time datetime="2011-11-11">November 11th, 2011</time>, the change was reverted citing <q cite="http://lists.w3.org/Archives/Public/public-html/2011Nov/0098.html">feature additions or removals should only be done with sufficient prior notice to the group</q><sup>2</sup></p>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://lists.w3.org/Archives/Public/public-html/2011Nov/0098.html">http://lists.w3.org/Archives/Public/public-html/2011Nov/0098.html</a></li>
+                </ol>
+            </div>
+        </section>
+
+        <section>
+            <h1>But Why Does This Matter?</h1>
+
+            <ul>
+                <li>Browser adoption rate</li>
+                <li>Search engine support</li>
+            </ul>
+        </section>
+
+        <section>
             <div class="title">
                 <figure>
                     <img src="/images/quirksmode-table.png" alt="Browser compatibility tables from quirksmode.org">

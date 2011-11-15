@@ -234,7 +234,7 @@ body > footer {
     	transform: translateY(120%);
     }
 
-.present div, .present dl, .present dt, .present dd, .present ul, .present ol, .present li, .present h1, .present h2, .present h3, .present h4, .present h5, .present h6, .present pre, .present form, .present fieldset, .present img, .present input, .present textarea, .present p, .present blockquote, .present table, .present th, .present td, .present a, .present abbr, .present address, .present caption, .present cite, .present code, .present dfn, .present em, .present strong, .present th, .present var, .present hr, .present aside, .present canvas, .present details, .present figcaption, .present figure, .present hgroup, .present menu, .present nav, .present summary, .present data, .present audio, .present video, .present mark {
+.present div, .present dl, .present dt, .present dd, .present ul, .present ol, .present li, .present h1, .present h2, .present h3, .present h4, .present h5, .present h6, .present pre, .present form, .present fieldset, .present img, .present input, .present textarea, .present p, .present blockquote, .present table, .present th, .present td, .present a, .present abbr, .present address, .present caption, .present cite, .present code, .present dfn, .present em, .present strong, .present th, .present var, .present hr, .present aside, .present canvas, .present details, .present figcaption, .present figure, .present hgroup, .present menu, .present nav, .present summary, .present data, .present audio, .present video, .present mark, .present span, .present q {
     -webkit-transition: opacity 400ms ease-in-out;
     -moz-transition: opacity 400ms ease-in-out;
     -ms-transition: opacity 400ms ease-in-out;

@@ -25,27 +25,36 @@
 
     <article>
         <header>
-            <hgroup>
-                <h1>Inside HTML Level 1</h1>
-            </hgroup>
+            <h1>Inside HTML Level 1</h1>
+        </header>
+
+        <section>
             <ol>
                 <li>DOM</li>
                 <li>Elements</li>
                 <li>Validation</li>
                 <li>Semantics</li>
             </ol>
-        </header>
-    </article>
+        </section>
+   </article>
 
     <article>
         <header>
             <h1><abbr title="Document Object Model">DOM</abbr></h1>
-            <p>That's just the HTML Elements, right?</p>
-            <p class="step">No.</p>
         </header>
 
         <section>
-            <h1>DOM: <dfn id="dom">Set of Objects and Interfaces for Accessing and Manipulating Document Objects</dfn></h1>
+            <hgroup class="title">
+                <h2>That's just the HTML Elements, right?<br /><em class="step">No.</em></h2>
+            </hgroup>
+        </section>
+
+        <section>
+            <h1>DOM</h1>
+            <dl>
+                <dt>Document Object Model (DOM)</dt>
+                <dd>Set of Objects and Interfaces for Accessing and Manipulating Document Objects</dd>
+            </dl>
         </section>
         <section>
             <h1>The DOM Structure Model</h1>
@@ -239,88 +248,8 @@
         </header>
 
         <section>
-            <h1>Name All HTML4 Elements</h1>
-
-            <input type="text" id="htmlElement" name="htmlElement">
-            <button type="button" id="htmlStart">Go!</button>
-            <button type="cancel" id="htmlCancel">Cancel</button>
-            <span class="meter" id="htmlProgress"><span class="meterValue"></span><span class="meterProgress"><span>0</span> of <span>91</span></span></span>
-            <output for="htmlElement"></output>
-            <script>
-            (function() {
-                var allElements = ['a', 'abbr', 'acronym', 'address', 'applet', 'area', 'b', 'base', 'basefont', 'bdo', 'big', 'blockquote', 'body', 'br', 'button', 'caption', 'center', 'cite', 'code', 'col', 'colgroup', 'dd', 'del', 'dfn', 'dir', 'div', 'dl', 'dt', 'em', 'fieldset', 'font', 'form', 'frame', 'frameset', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'isindex', 'kbd', 'label', 'legend', 'li', 'link', 'map', 'menu', 'meta', 'noframes', 'noscript', 'object', 'ol', 'optgroup', 'option', 'p', 'param', 'pre', 'q', 's', 'samp', 'script', 'select', 'small', 'span', 'strike', 'strong', 'style', 'sub', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'title', 'tr', 'tt', 'u', 'ul', 'var'],
-                    progress = document.querySelector('#htmlProgress'),
-                    value = progress.querySelector('.meterValue'),
-                    count = progress.querySelector('.meterProgress span:first-child'),
-                    input = document.querySelector('#htmlElement'),
-                    output = document.querySelector('output[for=htmlElement]');
-
-                document.querySelector('#htmlStart').addEventListener('click', function () {
-                    var els = allElements;
-                    SS.instance.removeListeners();
-                    progress.value = 0;
-                    input.addEventListener('keyup', function () {
-                        var out = [];
-                        if (_.indexOf(els, input.value) !== -1) {
-                            els = _.without(els, input.value);
-                            input.value = '';
-
-                            value.style.width = ((allElements.length - els.length) / allElements.length) * progress.offsetWidth + 'px';
-                            count.innerText = allElements.length - els.length;
-
-                            output.value = _.difference(allElements, els).sort().join(', ');
-                        }
-                    });
-                });
-
-                document.querySelector('#htmlCancel').addEventListener('click', function () {
-                    SS.instance.addListeners();
-                });
-
-            })();
-            </script>
-        </section>
-
-        <section>
-            <h1>Name All HTML5 Elements</h1>
-
-            <input type="text" id="html5Element" name="html5Element">
-            <button type="button" id="html5Start">Go!</button>
-            <button type="cancel" id="html5Cancel">Cancel</button>
-            <span class="meter" id="html5Progress"><span class="meterValue"></span><span class="meterProgress"><span>0</span> of <span>108</span></span></span>
-            <output for="html5Element"></output>
-            <script>
-            (function() {
-                var allElements = ['a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b', 'base', 'bdi', 'bdo', 'blockquote', 'body', 'br', 'button', 'canvas', 'caption', 'cite', 'code', 'col', 'colgroup', 'command', 'data', 'datalist', 'dd', 'del', 'details', 'dfn', 'div', 'dl', 'dt', 'em', 'embed', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins', 'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'map', 'mark', 'menu', 'meta', 'meter', 'nav', 'noscript', 'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param', 'pre', 'progress', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'script', 'section', 'select', 'small', 'source', 'span', 'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td', 'textarea', 'tfoot', 'th', 'thead', 'title', 'tr', 'track', 'u', 'ul', 'var', 'video', 'wbr'],
-                    progress = document.querySelector('#html5Progress'),
-                    value = progress.querySelector('.meterValue'),
-                    count = progress.querySelector('.meterProgress span:first-child'),
-                    input = document.querySelector('#html5Element'),
-                    output = document.querySelector('output[for=html5Element]');
-
-                document.querySelector('#html5Start').addEventListener('click', function () {
-                    var els = allElements;
-                    SS.instance.removeListeners();
-                    progress.value = 0;
-                    input.addEventListener('keyup', function () {
-                        var out = [];
-                        if (_.indexOf(els, input.value) !== -1) {
-                            els = _.without(els, input.value);
-                            input.value = '';
-
-                            value.style.width = ((allElements.length - els.length) / allElements.length) * progress.offsetWidth + 'px';
-                            count.innerText = allElements.length - els.length;
-
-                            output.value = _.difference(allElements, els).sort().join(', ');
-                        }
-                    });
-                });
-
-                document.querySelector('#html5Cancel').addEventListener('click', function () {
-                    SS.instance.addListeners();
-                });
-            })();
-            </script>
+            <h1>Pop Quiz!</h1>
+            <h2><a href="http://Awesome-Sauce.local/s/html/quiz1.html">Awesome-Sauce.local/s/html/quiz1.html</a></h2>
         </section>
 
         <section>
