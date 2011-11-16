@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>CSS Quiz 1</title>
+
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/quiz.css">
+
+    <style>
+    header {
+        -webkit-transition: all 400ms ease-in-out;
+        -moz-transition: all 400ms ease-in-out;
+        -ms-transition: all 400ms ease-in-out;
+        -o-transition: all 400ms ease-in-out;
+        transition: all 400ms ease-in-out;
+        overflow: hidden;
+    }
+    output span {
+        color: #999;
+        font-style: italic;
+    }
+
+    input {
+        font-size: 32px;
+    }
+    </style>
+
+    <script src="/js/underscore.js"></script>
+    <script src="/js/prettify/prettify.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>The CSS Properties Quiz</h1>
+        <p>Take 5 minutes and name as many CSS2.1 Properties as you can without using any outside sources (web, people, documents, source).</p>
+    </header>
+
+    <section>
+        <label for="property">Property:</label> <input type="text" id="property" name="property" autofocus>
+        <h2>Progress</h2>
+        <p><span class="meter" id="htmlProgress"><span class="meterValue"></span><span class="meterProgress"><span>0</span> of <span>91</span></span></span></p>
+        <h2>Correct Properties</h2>
+        <p><output for="property"><span>none :(</span></output></p>
+        <script>
+        (function() {
+            var allElements = ['azimuth','background-attachment','background-color','background-image','background-position','background-repeat','background','border-collapse','border-color','border-spacing','border-style','border-top','border-right','border-bottom','border-left','border-top-color','border-right-color','border-bottom-color','border-left-color','border-top-style','border-right-style','border-bottom-style','border-left-style','border-top-width','border-right-width','border-bottom-width','border-left-width','border-width','border','bottom','caption-side','clear','clip','color','content','counter-increment','counter-reset','cue-after','cue-before','cue','cursor','direction','display','elevation','empty-cells','float','font-family','font-size','font-style','font-variant','font-weight','font','height','left','letter-spacing','line-height','list-style-image','list-style-position','list-style-type','list-style','margin-right','margin-left','margin-top','margin-bottom','margin','max-height','max-width','min-height','min-width','orphans','outline-color','outline-style','outline-width','outline','overflow','padding-top','padding-right','padding-bottom','padding-left','padding','page-break-after','page-break-before','page-break-inside','pause-after','pause-before','pause','pitch-range','pitch','play-during','position','quotes','richness','right','speak-header','speak-numeral','speak-punctuation','speak','speech-rate','stress','table-layout','text-align','text-decoration','text-indent','text-transform','top','unicode-bidi','vertical-align','visibility','voice-family','volume','white-space','widows','width','word-spacing','z-index'],
+                progress = document.querySelector('#htmlProgress'),
+                value = progress.querySelector('.meterValue'),
+                count = progress.querySelector('.meterProgress span:first-child'),
+                input = document.querySelector('#property'),
+                output = document.querySelector('output[for=property]'),
+                els = allElements;
+
+            progress.value = 0;
+            input.addEventListener('keyup', function () {
+                var out = [];
+                if (_.indexOf(els, input.value) !== -1) {
+                    els = _.without(els, input.value);
+                    input.value = '';
+
+                    value.style.width = ((allElements.length - els.length) / allElements.length) * progress.offsetWidth + 'px';
+                    count.innerText = allElements.length - els.length;
+
+                    output.value = _.difference(allElements, els).sort().join(', ');
+                }
+            });
+
+        }());
+        </script>
+    </section>
+
+</body>
+</html>
