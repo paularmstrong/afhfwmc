@@ -85,6 +85,18 @@
             padding: 20px;
             height: 60px;
         }
+
+    .tricklink {
+        cursor: pointer;
+        padding: 30px;
+        margin: -30px;
+        color: #00F;
+        text-decoration: underline;
+    }
+        .tricklink:hover {
+            background: rgba(50,50,160,0.5);
+            color: #FFF;
+        }
     </style>
 
     <script src="/js/underscore.js"></script>
@@ -181,34 +193,58 @@
         </section>
 
         <section>
-            <h1>Block Width</h1>
+            <h1>Block Size</h1>
 
-            <!-- TODO: illustration of block width calculation vs (100% + padding) example -->
-            <!-- http://css-tricks.com/2841-the-css-box-model/ -->
-        </section>
-
-        <section>
-            <h1>Block Height</h1>
-
-            <!-- TODO: auto height vs declared height vs parent height -->
+            <div style="background:#FFF; width:500px; margin:0 auto; color:#FFF; padding:40px 0;">
+                <p style="text-align: center; color: #444">500px width container</p>
+                <div style="background: #444; padding:40px; margin: 0 0 20px">Auto width + 40px padding box</div>
+                <div style="background: #444; padding:40px; width: 100%;">100% width + 40px padding box</div>
+            </div>
         </section>
 
         <section>
             <h1>Absolute Positioned Elements</h1>
 
-            <!-- TODO: auto width vs width when text wraps -->
+            <div style="background:#FFF; width:500px; min-height:200px; margin:0 auto; color:#FFF; padding:40px 0; position: relative;">
+                <div style="background:#444; position:absolute; right:0;">absolute position</div>
+                <div style="background:#444; position:absolute; right:0; top:100px;">This box is as wide as needed.</div>
+                <div style="background:#444; position:absolute; right:0; top:160px;">This box will grow up to 100% as needed, and then wrap text.</div>
+            </div>
         </section>
 
         <section>
             <h1>Inline Elements</h1>
 
-            <!-- TODO: affect of padding, margin, width on an inline element -->
+            <div style="background:#FFF; width:500px; min-height:200px; margin:0 auto; color:#FFF; padding:40px 0; position: relative;">
+                <div style="background:rgba(50,50,50,0.5); display:inline; padding:30px; line-height:1.8em;">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</div>
+            </div>
         </section>
 
         <section>
             <h1>Inline-Block Elements</h1>
 
-            <!-- TODO: inline-block elements are rad -->
+            <div style="background:#FFF; width:500px; min-height:115px; margin:0 auto 24px; color:#FFF; padding:40px 0; position: relative;">
+                <div style="background:rgba(50,50,50,0.5); display:block;">Pellentesque <div style="display:inline; background:rgba(50,50,50,0.5); padding:30px; line-height:1.8em;">habitant morbi</div> tristique senectus et netus et malesuada fames ac turpis egestas.</div>
+            </div>
+
+            <div style="background:#FFF; width:500px; min-height:150px; margin:0 auto; color:#FFF; padding:40px 0; position: relative;">
+                <div style="background:rgba(50,50,50,0.5); display:block;">Pellentesque <div style="display:inline-block; background:rgba(50,50,50,0.5); padding:30px; line-height:1.8em;">habitant morbi</div> tristique senectus et netus et malesuada fames ac turpis egestas.</div>
+            </div>
+        </section>
+
+        <section>
+            <h1>Inline Element Tricks!</h1>
+
+            <div style="background:#FFF; width:500px; min-height:115px; margin:0 auto 24px; color:#FFF; padding:40px 0; position: relative;">
+                <div style="background:rgba(50,50,50,0.5); display:block;">Pellentesque <a class="tricklink">habitant morbi</a> tristique senectus et netus et malesuada fames ac turpis egestas.</div>
+            </div>
+
+            <div class="step">
+                <pre class="prettyprint lang-css">.tricklink {
+    padding: 30px;
+    margin: -30px;
+}</pre>
+            </div>
         </section>
     </article>
 
