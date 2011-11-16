@@ -382,7 +382,7 @@ p.bar { color: white; }
 #foo.bar p { color: yellow; }
 #foo .bar { color: black; }</pre>
             <div class="step">
-                <pre class="prettyprint lang-html">&lt;div id=&quot;foo&quot; class=&quot;bar&quot;&gt;
+                <pre class="prettyprint lang-html">&lt;div class=&quot;bar&quot; id=&quot;foo&quot;&gt;
     &lt;p class=&quot;bar&quot;&gt;Hello World&lt;/p&gt;
 &lt;/div&gt;</pre>
             </div>
@@ -522,7 +522,11 @@ p.bar { color: white; }
 
         <section>
             <h1>Exercise</h1>
-            <!-- TODO: selector specificity exercise -->
+
+            <pre class="prettyprint lang-css">div.product-wide.in-inventory div.tray
+div.product-wide a.buynow span
+div.product div.sales span.sales-count
+#browse-categories div.bd div.category</pre>
         </section>
 
         <section>
@@ -534,7 +538,6 @@ p.bar { color: white; }
                 </ol>
             </div>
         </section>
-
     </article>
 
     <article>
