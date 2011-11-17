@@ -4,11 +4,16 @@ table {
 th, td {
     border: 2px solid #DDD;
     padding: 3px 5px 2px;
+    background: rgba(200,200,200,0.7);
 }
 th {
     font-weight: bold;
     background: rgba(255,255,255,0.4);
 }
+    tbody tr:hover th, tbody tr:hover td {
+        background: rgba(150,150,255,0.4);
+    }
+th.value, td.value { text-align: right; }
 
 img, object {
     max-width: 100%;
