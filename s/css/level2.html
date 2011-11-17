@@ -37,28 +37,134 @@
         </header>
 
         <section>
-            <pre class="prettyprint lang-css">div { color: red; }
-div.bar { color: green; }
-p.bar { color: white; }
-.bar { color: cyan; }
-#foo.bar .bar { color: blue; }
-#foo.bar p { color: yellow; }
-#foo .bar { color: black; }</pre>
-        </section>
-
-        <section>
             <object width="813" height="612"><param name="movie" value="http://www.youtube.com/v/AKZ2fj8155I&hl=en_US&feature=player_embedded&version=3"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed src="http://www.youtube.com/v/AKZ2fj8155I&hl=en_US&feature=player_embedded&version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="813" height="612"></embed></object>
         </section>
 
-        <!-- TODO: CSS selector efficiency -->
-    </article>
+        <section>
+            <h1>For Consideration</h1>
 
-    <article>
-        <header>
-            <h1>Units - Beyond Pixels</h1>
-        </header>
+            <!-- Now imagine some gigantic document with lots of divs sprinkled all over the place. Somebody then goes and sets the class name of the body to foo.
 
-        <!-- TODO: units -->
+            In WebKit, that will result in us essentially having to re-resolve style on the entire document. For a large page, that example could lock up the browser. -->
+            <pre class="prettyprint lang-css">.foo div { &hellip; }</pre>
+        </section>
+
+        <section>
+            <h1>Read Right To Left</h1>
+            <pre class="prettyprint lang-css">div { &hellip; }
+div p { &hellip; }
+div p.bar { &hellip; }
+div#foo p.bar span { &hellip; }
+table > tr > td { &hellip; }</pre>
+        </section>
+
+        <section>
+            <h1>Don't Qualify ID Rules</h1>
+            <h2 class="bad">Bad</h2>
+            <pre class="prettyprint lang-css">button#backButton { &hellip; }
+.menu-left#newMenuIcon { &hellip; }</pre>
+
+            <div class="step">
+                <h2 class="good">Good</h2>
+                <pre class="prettyprint lang-css">#backButton { &hellip; }
+#newMenuIcon { &hellip; }</pre>
+            </div>
+        </section>
+
+        <section>
+            <h1>Avoid Qualifying Classes With Tags</h1>
+            <!-- One convention you can use is to include the tag name in the class name.  However, this may cost some flexibility; if design changes are made to the tag, the class names must be changed as well. (It’s best to choose strictly semantic names, as such flexibility is one of the aims of separate stylesheets.) -->
+            <h2 class="bad">Slow</h2>
+            <pre class="prettyprint lang-css">td.indented { &hellip; }</pre>
+
+            <div class="step">
+                <h2 class="okay">Faster</h2>
+                <pre class="prettyprint lang-css">.td-indented { &hellip; }</pre>
+            </div>
+
+            <div class="step">
+                <h2 class="good">Best</h2>
+                <pre class="prettyprint lang-css">.deep-cell { &hellip; }</pre>
+            </div>
+        </section>
+
+        <section>
+            <h1>Descendent Selector</h1>
+            <blockquote><p>The descendant selector is the most expensive selector in CSS. It is dreadfully expensive — especially if the selector is in the Tag or Universal Category.</p></blockquote>
+
+            <p>&ndash;David Hyatt (WebKit Creator)</p>
+        </section>
+
+        <section>
+            <h1>Avoid the Descendant Selector</h1>
+
+            <!-- The descendant selector is the most expensive selector in CSS. It is dreadfully expensive—especially if the selector is in the Tag or Universal Category.
+
+            Frequently, what is really desired is the child selector.  Using the descendant selector is banned in User Interface CSS without the explicit approval of your skin’s module owner. -->
+
+            <h2 class="bad">Bad</h2>
+            <pre class="prettyprint lang-css">table tr th { &hellip; }</pre>
+
+            <div class="step">
+                <h2 class="okay">Better</h2>
+                <pre class="prettyprint lang-css">table > tr > th { &hellip; }</pre>
+            </div>
+        </section>
+
+        <section>
+            <h1>Avoid the Child Selector</h1>
+
+            <!-- Avoid using the child selector with Tag Category rules. This will dramatically lengthen the match time (especially if the rule is likely to be matched) for all occurrences of that element. -->
+
+            <h2 class="okay">Okay</h2>
+            <pre class="prettyprint lang-css">table > tr > th { &hellip; }</pre>
+
+            <div class="step">
+                <h2 class="good">Fastest</h2>
+                <pre class="prettyprint lang-css">.cell-head { &hellip; }</pre>
+            </div>
+        </section>
+
+        <section>
+            <h1>Rely on Inheritance</h1>
+
+            <!-- Learn which properties inherit, and allow them to do so!
+
+            The “bad” rule forces every menu’s icons to be tested for containment within the bookmarks menu item. Since there are many menus, this is extraordinarily expensive.  Instead, the “good” rule limits the testing to the bookmarks menu. -->
+
+            <h2 class="bad">Bad</h2>
+            <pre class="prettyprint lang-css">#menu li { list-style-type: disc; }</pre>
+
+            <div class="step">
+                <h2 class="good">Good</h2>
+                <pre class="prettyprint lang-css">#menu { list-style-type: disc; }</pre>
+            </div>
+        </section>
+
+        <section>
+            <div class="title">
+                <h1>A selector that fails is more efficient than that same selector matching</h1>
+            </div>
+        </section>
+
+        <section>
+            <div class="title">
+                <blockquote><p><em>The sad truth about CSS3 selectors is that they really shouldn’t be used at all if you care about page performance.</em></p></blockquote>
+            </div>
+            <div class="sources">
+                <ol>
+                    <li><a href="http://www.shauninman.com/archive/2008/05/05/css_qualified_selectors#comment_3942">David Hyatt, <i>CSS Qualified Selectors</i></a></li>
+                </ol>
+            </div>
+        </section>
+
+        <section>
+            <hgroup>
+                <h1>Measure For Yourself!</h1>
+                <h2><a href="http://stevesouders.com/efws/css-selectors/csscreate.php">stevesouders.com/efws/css-selectors/csscreate.php</a></h2>
+            </hgroup>
+        </section>
+
     </article>
 
     <article>

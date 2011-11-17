@@ -1,3 +1,7 @@
+.bad { color: #900; }
+.okay { color: #990; }
+.good { color: #090; }
+
 table {
     width: 100%;
 }

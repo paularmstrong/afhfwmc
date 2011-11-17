@@ -246,8 +246,8 @@ body > footer {
     opacity: 0;
 }
 
-form#goto,
-section#toc {
+#goto,
+#toc {
     opacity: 0;
     background: rgba(0,0,0,0.9);
     color: #FFF;
@@ -284,12 +284,12 @@ section#toc {
     -o-transform: scale(0.3);
     transform: scale(0.3);
 }
-    form#goto.hidden,
-    section#toc.hidden {
+    #goto.hidden,
+    #toc.hidden {
         visibility: hidden;
     }
-    form#goto.show,
-    section#toc.show {
+    #goto.show,
+    #toc.show {
         visibility: visible;
         opacity: 1;
         -webkit-transform: scale(1);
@@ -298,38 +298,38 @@ section#toc {
         -o-transform: scale(1);
         transform: scale(1);
     }
-    section#toc {
+    #toc {
         width: 400px;
         height: 300px;
         padding: 20px;
         margin: -200px 0 0 -200px;
         overflow: hidden;
     }
-        section#toc h1 {
+        #toc h1 {
             font-size: 20px;
             margin: 0 0 5px;
         }
-        section#toc ol {
+        #toc ol {
             height: 280px;
             overflow-y: auto;
             overflow-x: hidden;
             padding: 0;
         }
-            section#toc ol ol {
+            #toc ol ol {
                 height: auto;
             }
-            section#toc ol li {
+            #toc ol li {
                 list-style-type: decimal;
                 margin: 0 0 4px 36px;
             }
-            section#toc ol li:nth-child(odd) {
+            #toc ol li:nth-child(odd) {
                 background: rgba(100,100,100,0.1);
             }
-        section#toc a {
+        #toc a {
             color: #FFF;
             display: block;
         }
-            section#toc a:hover {
+            #toc a:hover {
                 background: #EEE;
                 color: #222;
             }
